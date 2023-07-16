@@ -6,6 +6,7 @@ import Switch from "react-switch";
 import { BsFillSunFill } from 'react-icons/bs'
 import { BsFillMoonFill } from 'react-icons/bs'
 import { useTheme } from '@/app/stores/site/hooks';
+import Link from 'next/link';
 
 const Header = () => {
     const theme = useTheme()
@@ -24,6 +25,7 @@ const Header = () => {
         <header className='
              fixed
              flex flex-row 
+             z-50
              px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-80
              w-full items-center justify-between 
              top-0 h-16 font-semibold
@@ -33,7 +35,7 @@ const Header = () => {
              bg-light-color text-dark-color dark:bg-dark-color transition-colors dark:text-light-color
              '>
             <h4 className='cursor-pointer'>
-                B-LOG
+                <Link href={'/'}>B-LOG</Link>
             </h4>
             <ul className='flex flex-row justify-between gap-4 cursor-pointer transition-opacity'>
                 <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'>

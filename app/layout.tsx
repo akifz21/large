@@ -28,6 +28,7 @@ export default function RootLayout({
             px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-80
           bg-light-color text-dark-color dark:bg-dark-color
             transition-colors
+            pt-24
            dark:text-light-color min-h-screen">
 
             {children}
