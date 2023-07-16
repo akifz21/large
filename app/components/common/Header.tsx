@@ -47,6 +47,9 @@ const Header = () => {
                 <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'>
                     Contact
                 </li>
+                <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'>
+                    <Link href={'/login'}>Login</Link>
+                </li>
                 <li>
                     <button >
                         <Switch
