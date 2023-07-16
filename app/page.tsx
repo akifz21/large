@@ -1,22 +1,28 @@
 "use client";
-import Image from "next/image";
-import { useTheme } from "./stores/site/hooks";
-import { setTheme } from "@/app/stores/site/actions";
-import useColorScheme from "./hooks/use-color-scheme";
-import { useEffect } from "react";
+import BlogCard from "./components/BlogCard";
+import SearchBar from "./components/SearchBar";
+import { BsFillArrowLeftSquareFill } from 'react-icons/bs'
+import { BsFillArrowRightSquareFill } from 'react-icons/bs'
 
 export default function Home() {
-  const theme = useTheme();
-  const colorSchema = useColorScheme();
 
   return (
-    <>
-      <header className="bg-white text-black dark:bg-gray-600 dark:text-white text-center h-15">
-        test - header
-      </header>
-      <button onClick={() => setTheme("system")}>System Theme</button>
-      <button onClick={() => setTheme("light")}>Light Theme</button>
-      <button onClick={() => setTheme("dark")}>Dark Theme</button>
-    </>
+    <div className="min-h-screen flex flex-col gap-8 justify-center items-center">
+      <div className="text-center">
+        <h1 className="text-2xl font-black">
+          B-LOG
+        </h1>
+        <p className="opacity-75 font-medium">a blog about software development</p>
+      </div>
+      <SearchBar />
+      <div className="flex flex-row w-full justify-between gap-10">
+        <BsFillArrowLeftSquareFill className="self-center" size={40} />
+        <BlogCard />
+        <BlogCard />
+        <BlogCard />
+        <BsFillArrowRightSquareFill className="self-center" size={40} />
+      </div>
+
+    </div>
   );
 }

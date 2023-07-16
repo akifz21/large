@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   language: "tr",
-  theme: localStorage.getItem("theme") || "system",
+  theme: typeof window !== 'undefined' && localStorage.getItem("theme") || "system",
 };
 
 const site = createSlice({
