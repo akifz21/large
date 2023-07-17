@@ -1,6 +1,6 @@
 "use client";
-import useColorScheme from "@/app/hooks/use-color-scheme";
-import { useTheme } from "@/app/stores/site/hooks";
+import useColorScheme from "@/app/_hooks/use-color-scheme";
+import { useTheme } from "@/app/_stores/site/hooks";
 import React, { useEffect } from "react";
 
 const Theme = () => {

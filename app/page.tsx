@@ -1,6 +1,6 @@
 "use client";
-import BlogCard from "./components/BlogCard";
-import SearchBar from "./components/SearchBar";
+import BlogCard from "./_components/BlogCard";
+import SearchBar from "./_components/SearchBar";
 import { BsFillArrowLeftSquareFill } from 'react-icons/bs'
 import { BsFillArrowRightSquareFill } from 'react-icons/bs'
 

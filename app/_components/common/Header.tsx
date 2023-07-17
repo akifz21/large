@@ -7,10 +7,13 @@ import { BsFillSunFill } from 'react-icons/bs'
 import { BsFillMoonFill } from 'react-icons/bs'
 import { useTheme } from '@/app/stores/site/hooks';
 import Link from 'next/link';
+import { useUser } from '@/app/stores/user/hooks';
+
 
 const Header = () => {
     const theme = useTheme()
     const [isChecked, setIsChecked] = useState(localStorage.getItem("theme") === "light" ? false : true)
+    const user: any = useUser()
 
     const toggleTheme = () => {
         if (theme === "light") {
@@ -39,7 +42,7 @@ const Header = () => {
             </h4>
             <ul className='flex flex-row justify-between gap-4 cursor-pointer transition-opacity'>
                 <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'>
-                    Blogs
+                    {user.email}
                 </li>
                 <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'>
                     About
@@ -71,9 +74,6 @@ const Header = () => {
                     </button>
                 </li>
             </ul>
-
-
-
         </header>
     )
 }

@@ -1,5 +1,7 @@
 'use client'
 import { useState } from "react"
+import axios from 'axios'
+import { login } from "../_stores/user/actions"
 
 export default function Page() {
     const [formData, setFormData] = useState({})
@@ -12,9 +14,10 @@ export default function Page() {
     const handleSubmit = async (e: any) => {
         e.preventDefault()
         try {
-            console.log(formData)
+            const response = await axios.post("http://localhost:4000/api/auth", formData)
+            login(response.data.data.access_token)
         } catch (error) {
-
+            console.log(error)
         }
     }
     return (
@@ -32,7 +35,7 @@ export default function Page() {
                     onChange={handleChange}
                     autoComplete="off"
                 />
-                <input type="text"
+                <input type="password"
                     name="password"
                     className="py-2 
                     text-sm text-light-color
