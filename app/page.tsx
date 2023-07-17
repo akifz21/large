@@ -1,8 +1,7 @@
 "use client";
 import BlogCard from "./_components/BlogCard";
 import SearchBar from "./_components/SearchBar";
-import { BsFillArrowLeftSquareFill } from 'react-icons/bs'
-import { BsFillArrowRightSquareFill } from 'react-icons/bs'
+
 
 export default function Home() {
 
@@ -16,11 +15,9 @@ export default function Home() {
       </div>
       <SearchBar />
       <div className="flex flex-row w-full justify-between gap-10">
-        <BsFillArrowLeftSquareFill className="self-center" size={40} />
         <BlogCard />
         <BlogCard />
         <BlogCard />
-        <BsFillArrowRightSquareFill className="self-center" size={40} />
       </div>
       <div className="flex flex-row w-full justify-between gap-4">
         <div className="w-1/2 flex flex-col gap-2 p-10 items-center">

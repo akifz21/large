@@ -1,19 +1,24 @@
 'use client'
 import React, { useState } from 'react'
-import useColorScheme from '../../hooks/use-color-scheme'
-import { setTheme } from '../../stores/site/actions'
+import { setTheme } from '../../_stores/site/actions'
 import Switch from "react-switch";
 import { BsFillSunFill } from 'react-icons/bs'
 import { BsFillMoonFill } from 'react-icons/bs'
-import { useTheme } from '@/app/stores/site/hooks';
+import { useTheme } from '@/app/_stores/site/hooks';
 import Link from 'next/link';
-import { useUser } from '@/app/stores/user/hooks';
+import { useIsLoggedIn, useUser } from '@/app/_stores/user/hooks';
+import { logout } from '@/app/_stores/user/actions';
+import { useRouter } from 'next/navigation';
+import LoginModal from '../LoginModal';
+import ProfileDropdown from '../ProfileDropdown';
 
 
 const Header = () => {
     const theme = useTheme()
     const [isChecked, setIsChecked] = useState(localStorage.getItem("theme") === "light" ? false : true)
     const user: any = useUser()
+    const isLoggedIn = useIsLoggedIn()
+    const router = useRouter()
 
     const toggleTheme = () => {
         if (theme === "light") {
@@ -24,25 +29,31 @@ const Header = () => {
         setIsChecked(!isChecked)
     }
 
+
+    const handleLogout = () => {
+        logout()
+        router.push("/")
+    }
+
     return (
         <header className='
              fixed
              flex flex-row 
              z-50
-             px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-80
+             px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-60
              w-full items-center justify-between 
-             top-0 h-16 font-semibold
-             text-lg border-b
+             top-0 h-16 
+             text-md border-b
              border-slate-500
              border-opacity-20
              bg-light-color text-dark-color dark:bg-dark-color transition-colors dark:text-light-color
              '>
-            <h4 className='cursor-pointer'>
+            <h4 className='cursor-pointer font-bold'>
                 <Link href={'/'}>B-LOG</Link>
             </h4>
-            <ul className='flex flex-row justify-between gap-4 cursor-pointer transition-opacity'>
+            <ul className='flex flex-row justify-between items-center gap-4 cursor-pointer transition-opacity'>
                 <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'>
-                    {user.email}
+                    Blogs
                 </li>
                 <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'>
                     About
@@ -50,9 +61,15 @@ const Header = () => {
                 <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'>
                     Contact
                 </li>
-                <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'>
-                    <Link href={'/login'}>Login</Link>
-                </li>
+                {
+                    !isLoggedIn ?
+                        <li> <LoginModal /></li>
+                        :
+                        <div className='flex flex-row gap-4 items-center'>
+                            <li ><ProfileDropdown /></li>
+                            <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'><button onClick={() => logout()}>Logout</button></li>
+                        </div>
+                }
                 <li>
                     <button >
                         <Switch

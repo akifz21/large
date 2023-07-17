@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit"
 import jwtDecode from "jwt-decode"
 
 const initialState = {
-    isLoggedIn: false,
-    user: JSON.parse(localStorage.getItem("user") || '{}')
+    isLoggedIn: typeof window !== 'undefined' && localStorage.getItem("user") ? true : false,
+    user: typeof window !== 'undefined' && JSON.parse(localStorage.getItem("user") || '{}')
 }
 
 const user = createSlice({
@@ -14,6 +14,7 @@ const user = createSlice({
             state.user = jwtDecode(action.payload)
             state.isLoggedIn = true
             console.log(state.user)
+            localStorage.setItem("token", action.payload)
             localStorage.setItem("user", JSON.stringify(state.user))
         },
         _logout: (state) => {
