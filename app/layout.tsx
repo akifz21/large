@@ -3,10 +3,12 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import { Providers } from "@/app/_stores/provider";
 import Theme from "./_components/appearence/Theme";
+import { ToastContainer, toast } from 'react-toastify';
 import Header from "./_components/common/Header";
 import Footer from "./_components/common/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+import 'react-toastify/dist/ReactToastify.css';
+
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "800", "900", '400', '700'],
   subsets: ['latin'],
@@ -22,19 +24,21 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+
   return (
-    <html lang="en">
-      <body className={poppins.className}>
+    <html className={poppins.className} lang="en">
+      <body >
         <Providers>
           <Theme />
           <Header />
+          <ToastContainer />
           <main className="
             px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-60
           bg-light-color text-dark-color dark:bg-dark-color
             transition-colors  
             pt-24
            dark:text-light-color min-h-screen">
-
             {children}
           </main>
           <Footer />

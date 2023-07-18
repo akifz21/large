@@ -6,17 +6,17 @@ import { BsFillSunFill } from 'react-icons/bs'
 import { BsFillMoonFill } from 'react-icons/bs'
 import { useTheme } from '@/app/_stores/site/hooks';
 import Link from 'next/link';
-import { useIsLoggedIn, useUser } from '@/app/_stores/user/hooks';
+import { useIsLoggedIn } from '@/app/_stores/user/hooks';
 import { logout } from '@/app/_stores/user/actions';
 import { useRouter } from 'next/navigation';
 import LoginModal from '../LoginModal';
 import ProfileDropdown from '../ProfileDropdown';
+import { toast } from 'react-toastify';
 
 
 const Header = () => {
     const theme = useTheme()
     const [isChecked, setIsChecked] = useState(localStorage.getItem("theme") === "light" ? false : true)
-    const user: any = useUser()
     const isLoggedIn = useIsLoggedIn()
     const router = useRouter()
 
@@ -33,6 +33,7 @@ const Header = () => {
     const handleLogout = () => {
         logout()
         router.push("/")
+        toast.success("Logout successfully")
     }
 
     return (
@@ -67,7 +68,7 @@ const Header = () => {
                         :
                         <div className='flex flex-row gap-4 items-center'>
                             <li ><ProfileDropdown /></li>
-                            <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'><button onClick={() => logout()}>Logout</button></li>
+                            <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'><button onClick={() => handleLogout()}>Logout</button></li>
                         </div>
                 }
                 <li>

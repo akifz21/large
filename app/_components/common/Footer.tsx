@@ -2,7 +2,11 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <footer className="h-16
+        <footer className="
+        h-16
+        relative
+        bottom-0
+        w-full
          flex items-center
           justify-between 
           px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-60

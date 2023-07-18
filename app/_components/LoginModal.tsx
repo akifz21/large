@@ -4,6 +4,7 @@ import { authLogin } from '../_api/auth'
 import { useRouter } from 'next/navigation'
 import { login } from '../_stores/user/actions'
 import { Button } from './common/Button'
+import { toast } from 'react-toastify'
 
 export default function LoginModal() {
     let [isOpen, setIsOpen] = useState(false)
@@ -31,6 +32,7 @@ export default function LoginModal() {
             console.log(response)
             login(response.data.data.access_token)
             router.push("/")
+            toast.success("Login successfully")
         } catch (error) {
             console.log(error)
         }
@@ -42,7 +44,7 @@ export default function LoginModal() {
                 <button
                     type="button"
                     onClick={openModal}
-                    className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+                    className="rounded-md bg-black dark:text-light-color bg-opacity-20 px-4 py-2 text-sm font-medium text-dark-color hover:bg-opacity-30"
                 >
                     Login
                 </button>
@@ -62,8 +64,8 @@ export default function LoginModal() {
                         <div className="fixed inset-0 bg-black bg-opacity-25" />
                     </Transition.Child>
 
-                    <div className="fixed  inset-0  overflow-y-auto">
-                        <div className="flex min-h-screen items-center justify-center p-4 text-center">
+                    <div className="fixed inset-0 overflow-y-auto">
+                        <div className="flex min-h-screen items-center justify-center  text-center">
                             <Transition.Child
                                 as={Fragment}
                                 enter="ease-out duration-300"
@@ -73,15 +75,15 @@ export default function LoginModal() {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-1/2 max-w-lg  overflow-hidden rounded-2xl bg-light-color dark:bg-dark-color p-6 text-left align-middle shadow-xl transition-all">
+                                <Dialog.Panel className="w-full max-w-md  overflow-hidden rounded-2xl bg-light-color dark:bg-dark-color p-6 text-left align-middle shadow-xl transition-all">
                                     <Dialog.Title
-                                        as="h3"
-                                        className="text-lg text-center font-bold leading-6 text-dark-color dark:text-light-color"
+                                        as="h1"
+                                        className="text-2xl text-center font-bold leading-6 border-b-2 pb-2  text-dark-color dark:text-light-color"
                                     >
                                         Login
                                     </Dialog.Title>
                                     <div className="flex flex-col items-center ">
-                                        <form onSubmit={handleSubmit} className="flex  rounded-md p-4  gap-4 w-full bg flex-col" action="">
+                                        <form onSubmit={handleSubmit} className="flex  rounded-md md:p-10 p-4  gap-4 w-full bg flex-col" action="">
                                             <input type="text"
                                                 name="email"
                                                 className="py-2 
@@ -104,7 +106,21 @@ export default function LoginModal() {
                                                 onChange={handleChange}
                                                 autoComplete="off"
                                             />
-                                            <Button type={'submit'} onClick={() => closeModal()}>Submit</Button>
+                                            <button className="rounded-md
+                                                        bg-dark-color
+                                                        px-4 py-2 text-sm
+                                                        font-medium
+                                                        w-1/2
+                                                        self-center
+                                                      text-light-color
+                                                        hover:opacity-75
+                                                        dark:bg-light-color
+                                                        dark:text-dark-color"
+                                                onClick={() => closeModal()}
+                                                type='submit'
+                                            >
+                                                Login
+                                            </button>
                                         </form>
                                     </div>
                                 </Dialog.Panel>

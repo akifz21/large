@@ -6,7 +6,7 @@ import SearchBar from "./_components/SearchBar";
 export default function Home() {
 
   return (
-    <div className="flex  flex-col gap-8 justify-center items-center">
+    <div className="flex flex-col gap-8 justify-center items-center">
       <div className="text-center">
         <h1 className="text-4xl font-black">
           B-LOG
