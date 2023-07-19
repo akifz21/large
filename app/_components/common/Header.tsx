@@ -42,33 +42,35 @@ const Header = () => {
              flex flex-row 
              z-50
              px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-60
-             w-full items-center justify-between 
+             w-full items-center justify-center 
              top-0 h-16 
              text-md border-b
              border-slate-500
              border-opacity-20
-             bg-light-color text-dark-color dark:bg-dark-color transition-colors dark:text-light-color
+             bg-light-color text-dark-color  dark:bg-dark-color transition-colors dark:text-light-color
              '>
-            <h4 className='cursor-pointer font-bold'>
-                <Link href={'/'}>B-LOG</Link>
-            </h4>
-            <ul className='flex flex-row justify-between items-center gap-4 cursor-pointer transition-opacity'>
-                <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'>
+          
+            <ul className='flex flex-row  items-center gap-10  transition-opacity'>
+                <li className='nav-item'>
                     Blogs
                 </li>
-                <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'>
+                <li className='nav-item'>
                     About
                 </li>
-                <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'>
+                <h4 className='cursor-pointer font-bold'>
+                    <Link href={'/'}>B-LOG</Link>
+                </h4>
+                <li className='nav-item'>
                     Contact
                 </li>
+              
                 {
                     !isLoggedIn ?
                         <li> <LoginModal /></li>
                         :
                         <div className='flex flex-row gap-4 items-center'>
                             <li ><ProfileDropdown /></li>
-                            <li className='opacity-70 hover:opacity-100 transition-opacity cursor-pointer'><button onClick={() => handleLogout()}>Logout</button></li>
+                            <li className='nav-item'><button onClick={() => handleLogout()}>Logout</button></li>
                         </div>
                 }
                 <li>

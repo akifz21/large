@@ -7,7 +7,7 @@ export default function Example() {
         <div>
             <Menu as="div" className="relative inline-block text-left">
                 <div>
-                    <Menu.Button className="inline-flex w-full justify-center rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+                    <Menu.Button className="inline-flex w-full justify-center nav-item">
                         Profile
                     </Menu.Button>
                 </div>
@@ -25,15 +25,7 @@ export default function Example() {
                             <Menu.Item>
                                 <button
                                     type='button'
-                                    className="rounded-md
-                                        bg-dark-color
-                                        px-4 py-2 text-sm
-                                        font-medium
-                                        w-full
-                                      text-light-color
-                                        hover:opacity-75
-                                        dark:bg-light-color
-                                        dark:text-dark-color"
+                                    className="custom-button"
                                 >
                                     Edit Profile
                                 </button>

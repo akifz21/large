@@ -3,7 +3,6 @@ import { Fragment, useState } from 'react'
 import { authLogin } from '../_api/auth'
 import { useRouter } from 'next/navigation'
 import { login } from '../_stores/user/actions'
-import { Button } from './common/Button'
 import { toast } from 'react-toastify'
 
 export default function LoginModal() {
@@ -44,7 +43,7 @@ export default function LoginModal() {
                 <button
                     type="button"
                     onClick={openModal}
-                    className="rounded-md bg-black dark:text-light-color bg-opacity-20 px-4 py-2 text-sm font-medium text-dark-color hover:bg-opacity-30"
+                    className="nav-item"
                 >
                     Login
                 </button>
@@ -82,46 +81,32 @@ export default function LoginModal() {
                                     >
                                         Login
                                     </Dialog.Title>
-                                    <div className="flex flex-col items-center ">
-                                        <form onSubmit={handleSubmit} className="flex  rounded-md md:p-10 p-4  gap-4 w-full bg flex-col" action="">
+                                    <div className="flex flex-col">
+                                        <form onSubmit={handleSubmit} className="flex border-b-2 rounded-md md:p-10 p-4  gap-4 w-full bg flex-col" action="">
                                             <input type="text"
                                                 name="email"
-                                                className="py-2 
-                                                    text-sm text-light-color
-                                                bg-dark-color rounded-md px-3
-                                                    dark:bg-light-color dark:text-dark-color 
-                                                    focus:outline-none"
+                                                className="custom-input"
                                                 placeholder="Email"
                                                 onChange={handleChange}
-                                                autoComplete="off"
+                                                autoComplete="off" 
                                             />
                                             <input type="password"
                                                 name="password"
-                                                className="py-2 
-                                                            text-sm text-light-color
-                                                        bg-dark-color rounded-md px-3
-                                                            dark:bg-light-color dark:text-dark-color 
-                                                            focus:outline-none"
+                                                className='custom-input'
                                                 placeholder=" Password"
                                                 onChange={handleChange}
                                                 autoComplete="off"
                                             />
-                                            <button className="rounded-md
-                                                        bg-dark-color
-                                                        px-4 py-2 text-sm
-                                                        font-medium
-                                                        w-1/2
-                                                        self-center
-                                                      text-light-color
-                                                        hover:opacity-75
-                                                        dark:bg-light-color
-                                                        dark:text-dark-color"
+                                            <button className="custom-button"
                                                 onClick={() => closeModal()}
-                                                type='submit'
+                                                type='submit'          
                                             >
                                                 Login
                                             </button>
                                         </form>
+                                        <div className='flex flex-row items-center p-2'>
+                                                <span className='text-sky-700'>Create acount</span>
+                                        </div>
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>

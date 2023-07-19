@@ -25,30 +25,17 @@ export default function Home() {
         <div className="col-span-4  "><BlogCard /></div>
         <div className="col-span-4 "><BlogCard /></div>
       </div>
-      <div className="flex flex-row w-full justify-between gap-4">
-        <div className="w-1/2 flex flex-col gap-2 p-10 items-center">
+      <div className="flex flex-row items-center justify-center border w-1/2 gap-4">
+        <div className="flex flex-col gap-2 p-10 items-center">
           <h4 className="text-2xl font-bold">Subscribe To Our Newsletter</h4>
           <p className="w-full opacity-75">Get weekly software news, articles, and videos delivered to your inbox.</p>
           <div className="flex flex-col  w-full gap-4">
-            <input type="text" className="py-2 w-full text-sm text-light-color bg-dark-color rounded-md px-3 dark:bg-light-color dark:text-dark-color focus:outline-none" placeholder=" Email" autoComplete="off" />
+            <input type="text" className="custom-input" placeholder=" Email" autoComplete="off" />
             <button
-              className="
-                   text-sm text-light-color
-                   w-1/4
-                   
-                   bg-dark-color dark:bg-light-color dark:text-dark-color p-2 rounded-md">
+              className="custom-button self-start">
               Sign up
             </button>
           </div>
-        </div>
-
-        <div className="w-1/2 flex flex-col gap-2 p-10 items-center">
-          <h4 className="text-2xl font-bold">Popular posts</h4>
-          <ul className=" font-semibold underline">
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-            <li>Lorem ipsum dolor sit amet.</li>
-          </ul>
         </div>
       </div>
 
