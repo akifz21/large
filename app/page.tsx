@@ -14,10 +14,16 @@ export default function Home() {
         <p className="opacity-75 font-medium">a blog about software development</p>
       </div>
       <SearchBar />
-      <div className="flex flex-row w-full justify-between gap-10">
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
+      <div className="grid items-center justify-center grid-cols-12 gap-6">
+
+        <div className="col-span-6  "><BlogCard /></div>
+        <div className="col-span-6  "><BlogCard /></div>
+
+        <div className="col-span-4  "><BlogCard /></div>
+        <div className="col-span-4  "><BlogCard /></div>
+
+        <div className="col-span-4  "><BlogCard /></div>
+        <div className="col-span-4 "><BlogCard /></div>
       </div>
       <div className="flex flex-row w-full justify-between gap-4">
         <div className="w-1/2 flex flex-col gap-2 p-10 items-center">

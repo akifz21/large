@@ -16,7 +16,7 @@ import { toast } from 'react-toastify';
 
 const Header = () => {
     const theme = useTheme()
-    const [isChecked, setIsChecked] = useState(localStorage.getItem("theme") === "light" ? false : true)
+    const [isChecked, setIsChecked] = useState(typeof window !== 'undefined' && localStorage.getItem("theme") === "light" ? false : true)
     const isLoggedIn = useIsLoggedIn()
     const router = useRouter()
 
