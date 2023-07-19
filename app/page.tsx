@@ -1,4 +1,3 @@
-"use client";
 import BlogCard from "./_components/BlogCard";
 import SearchBar from "./_components/SearchBar";
 

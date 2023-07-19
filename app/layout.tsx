@@ -8,6 +8,7 @@ import Header from "./_components/common/Header";
 import Footer from "./_components/common/Footer";
 
 import 'react-toastify/dist/ReactToastify.css';
+import { Container } from "./_components/common/Container";
 
 const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "800", "900", '400', '700'],
@@ -29,10 +30,7 @@ export default function RootLayout({
   return (
     <html className={poppins.className} lang="en">
       <body >
-        <Providers>
-          <Theme />
-          <Header />
-          <ToastContainer />
+      <Container>
           <main className="
             px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-60
           bg-light-color text-dark-color dark:bg-dark-color
@@ -41,8 +39,7 @@ export default function RootLayout({
            dark:text-light-color min-h-screen">
             {children}
           </main>
-          <Footer />
-        </Providers>
+        </Container>
       </body>
     </html>
   );

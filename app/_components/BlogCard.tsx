@@ -7,7 +7,7 @@ const BlogCard = () => {
   return (
     <div className="flex flex-col w-full p-8">
       <Link className="flex flex-col gap-4" href={"/blog/1"}>
-        <Image src={banner} className="rounded-md hover:scale-105 transform transition-transform" alt="blog-banner" />
+       <Image src={banner} className="rounded-md hover:scale-105 transform transition-transform" alt="blog-banner" />
         <div className="flex flex-col">
           <h2 className="text-base
          md:text-lg font-bold

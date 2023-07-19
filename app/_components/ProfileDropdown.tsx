@@ -1,16 +1,17 @@
+'use client'
 import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
 
 export default function Example() {
     return (
-        <div>
+        <>
             <Menu as="div" className="relative inline-block text-left">
-                <div>
-                    <Menu.Button className="inline-flex w-full justify-center nav-item">
+                <>
+                    <Menu.Button className="nav-item">
                         Profile
                     </Menu.Button>
-                </div>
+                </>
                 <Transition
                     as={Fragment}
                     enter="transition ease-out duration-100"
@@ -20,12 +21,12 @@ export default function Example() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                 >
-                    <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute -right-24 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <div className="px-1 py-1 ">
                             <Menu.Item>
                                 <button
                                     type='button'
-                                    className="custom-button"
+                                    className="custom-button w-full"
                                 >
                                     Edit Profile
                                 </button>
@@ -35,7 +36,7 @@ export default function Example() {
                     </Menu.Items>
                 </Transition>
             </Menu>
-        </div>
+        </>
     )
 }
 

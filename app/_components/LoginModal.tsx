@@ -1,3 +1,4 @@
+'use client'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 import { authLogin } from '../_api/auth'
@@ -39,11 +40,12 @@ export default function LoginModal() {
 
     return (
         <>
-            <div className=" inset-0 flex items-center justify-center">
+            <div className="inset-0 flex items-center justify-center">
                 <button
                     type="button"
                     onClick={openModal}
-                    className="nav-item"
+                    className='nav-item'
+                    
                 >
                     Login
                 </button>

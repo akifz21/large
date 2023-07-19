@@ -1,9 +1,6 @@
 'use client'
 import React, { useState } from 'react'
 import { setTheme } from '../../_stores/site/actions'
-import Switch from "react-switch";
-import { BsFillSunFill } from 'react-icons/bs'
-import { BsFillMoonFill } from 'react-icons/bs'
 import { useTheme } from '@/app/_stores/site/hooks';
 import Link from 'next/link';
 import { useIsLoggedIn } from '@/app/_stores/user/hooks';
@@ -49,51 +46,31 @@ const Header = () => {
              border-opacity-20
              bg-light-color text-dark-color  dark:bg-dark-color transition-colors dark:text-light-color
              '>
-          
-            <ul className='flex flex-row  items-center gap-10  transition-opacity'>
-                <li className='nav-item'>
+
+            <div className='flex flex-row  items-center gap-10  transition-opacity'>
+                <div className='nav-item'>
                     Blogs
-                </li>
-                <li className='nav-item'>
+                </div>
+                <div className='nav-item'>
                     About
-                </li>
+                </div>
                 <h4 className='cursor-pointer font-bold'>
                     <Link href={'/'}>B-LOG</Link>
                 </h4>
-                <li className='nav-item'>
+                <div className='nav-item'>
                     Contact
-                </li>
-              
+                </div>
+               
                 {
-                    !isLoggedIn ?
-                        <li> <LoginModal /></li>
+                   !isLoggedIn ?
+                         <LoginModal />
                         :
-                        <div className='flex flex-row gap-4 items-center'>
-                            <li ><ProfileDropdown /></li>
-                            <li className='nav-item'><button onClick={() => handleLogout()}>Logout</button></li>
-                        </div>
+                        <>
+                           <ProfileDropdown /> 
+                            <div className='nav-item'><button onClick={() => handleLogout()}>Logout</button></div>
+                        </>
                 }
-                <li>
-                    <button >
-                        <Switch
-                            onChange={toggleTheme}
-                            checked={isChecked}
-                            offColor='#201F1F'
-                            onColor='#F9F4EC'
-                            offHandleColor='#F9F4EC'
-                            onHandleColor='#201F1F'
-                            uncheckedIcon={
-                                <div className='flex justify-center items-center h-full text-light-color'>
-                                    <BsFillMoonFill />
-                                </div>
-                            }
-                            checkedIcon={<div className='flex justify-center items-center h-full text-dark-color'>
-                                <BsFillSunFill />
-                            </div>}
-                        />
-                    </button>
-                </li>
-            </ul>
+            </div>
         </header>
     )
 }
