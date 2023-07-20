@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit"
 import jwtDecode from "jwt-decode"
 
 const initialState = {
-    isLoggedIn: typeof window !== 'undefined' && localStorage.getItem("user") ? true : false,
-    user: typeof window !== 'undefined' && JSON.parse(localStorage.getItem("user") || '{}')
+    isLoggedIn:   false,
+    user: {}
 }
 
 const user = createSlice({
@@ -21,9 +21,15 @@ const user = createSlice({
             state.isLoggedIn = false
             state.user = {}
             localStorage.removeItem("user")
+        },
+        _setInitial : (state)=>{
+            if (localStorage.getItem("user") && localStorage.getItem("token")) {
+                state.user = JSON.parse(localStorage.getItem("user") || '{}')
+                state.isLoggedIn = true
+            }
         }
     }
 })
 
-export const { _login, _logout } = user.actions
+export const { _login, _logout,_setInitial } = user.actions
 export default user.reducer

@@ -1,37 +1,9 @@
-'use client'
-import React, { useState } from 'react'
-import { setTheme } from '../../_stores/site/actions'
-import { useTheme } from '@/app/_stores/site/hooks';
 import Link from 'next/link';
-import { useIsLoggedIn } from '@/app/_stores/user/hooks';
-import { logout } from '@/app/_stores/user/actions';
-import { useRouter } from 'next/navigation';
-import LoginModal from '../LoginModal';
-import ProfileDropdown from '../ProfileDropdown';
-import { toast } from 'react-toastify';
+import { Auth } from './Auth';
+import ThemeDropdown from './ThemeDropdown';
 
 
 const Header = () => {
-    const theme = useTheme()
-    const [isChecked, setIsChecked] = useState(typeof window !== 'undefined' && localStorage.getItem("theme") === "light" ? false : true)
-    const isLoggedIn = useIsLoggedIn()
-    const router = useRouter()
-
-    const toggleTheme = () => {
-        if (theme === "light") {
-            setTheme("dark")
-        } else {
-            setTheme("light")
-        }
-        setIsChecked(!isChecked)
-    }
-
-
-    const handleLogout = () => {
-        logout()
-        router.push("/")
-        toast.success("Logout successfully")
-    }
 
     return (
         <header className='
@@ -60,16 +32,12 @@ const Header = () => {
                 <div className='nav-item'>
                     Contact
                 </div>
-               
-                {
-                   !isLoggedIn ?
-                         <LoginModal />
-                        :
-                        <>
-                           <ProfileDropdown /> 
-                            <div className='nav-item'><button onClick={() => handleLogout()}>Logout</button></div>
-                        </>
-                }
+                <Auth />
+                <div >
+                    <ThemeDropdown />
+                </div>
+
+
             </div>
         </header>
     )

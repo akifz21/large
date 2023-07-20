@@ -1,12 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
-import { Providers } from "@/app/_stores/provider";
-import Theme from "./_components/appearence/Theme";
-import { ToastContainer, toast } from 'react-toastify';
-import Header from "./_components/common/Header";
-import Footer from "./_components/common/Footer";
-
 import 'react-toastify/dist/ReactToastify.css';
 import { Container } from "./_components/common/Container";
 
@@ -28,7 +22,7 @@ export default function RootLayout({
 
 
   return (
-    <html className={poppins.className} lang="en">
+    <html  className={poppins.className} lang="en">
       <body >
       <Container>
           <main className="
