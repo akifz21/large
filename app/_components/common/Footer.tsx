@@ -12,7 +12,7 @@ const Footer = () => {
           px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-60
            bg-light-color text-dark-color dark:bg-dark-color
             transition-colors dark:text-light-color
-            border-t mt-4
+            border-t 
             "
         >
 
