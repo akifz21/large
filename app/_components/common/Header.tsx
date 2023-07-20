@@ -16,6 +16,7 @@ const Header = () => {
              text-md border-b
              border-slate-500
              border-opacity-20
+             shadow-md
              bg-light-color text-dark-color  dark:bg-dark-color transition-colors dark:text-light-color
              '>
 
@@ -26,12 +27,13 @@ const Header = () => {
                 <div className='nav-item'>
                     About
                 </div>
-                <h4 className='cursor-pointer font-bold'>
-                    <Link href={'/'}>B-LOG</Link>
-                </h4>
+               
                 <div className='nav-item'>
                     Contact
                 </div>
+                <h4 className='cursor-pointer font-bold text-xl'>
+                    <Link href={'/'}>B-LOG</Link>
+                </h4>
                 <Auth />
                 <div >
                     <ThemeDropdown />

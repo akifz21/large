@@ -12,7 +12,7 @@
   }
 
   .custom-button{
-    @apply rounded-md bg-light-color px-4 border py-2 text-sm font-medium w-1/2 self-center text-dark-color hover:opacity-75 dark:bg-dark-color dark:text-light-color
+    @apply rounded-md bg-light-color px-4 border py-2 text-sm font-medium w-1/2 shadow-md transition-all self-center text-dark-color hover:opacity-80 dark:bg-dark-color dark:text-light-color
   }
 
   .custom-input{

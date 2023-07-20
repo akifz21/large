@@ -13,16 +13,16 @@ export default function Home() {
         <p className="opacity-75 font-medium">a blog about software development</p>
       </div>
       <SearchBar />
-      <div className="grid items-center justify-center grid-cols-12 gap-6">
+      <div className="grid items-center justify-center grid-cols-6 lg:grid-cols-12 gap-6">
 
         <div className="col-span-6  "><BlogCard /></div>
         <div className="col-span-6  "><BlogCard /></div>
 
-        <div className="col-span-4  "><BlogCard /></div>
-        <div className="col-span-4  "><BlogCard /></div>
+        <div className="col-span-6 lg:col-span-4  "><BlogCard /></div>
+        <div className="lg:col-span-4  col-span-6 "><BlogCard /></div>
 
-        <div className="col-span-4  "><BlogCard /></div>
-        <div className="col-span-4 "><BlogCard /></div>
+        <div className="lg:col-span-4 col-span-6 "><BlogCard /></div>
+        <div className="lg:col-span-4 col-span-6"><BlogCard /></div>
       </div>
       <div className="flex flex-row items-center justify-center border w-1/2 gap-4">
         <div className="flex flex-col gap-2 p-10 items-center">
