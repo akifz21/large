@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
     return (
         <footer className="
-        h-16
+        h-24
         relative
         bottom-0
         w-full

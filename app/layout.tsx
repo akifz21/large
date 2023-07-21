@@ -22,17 +22,10 @@ export default function RootLayout({
 
 
   return (
-    <html  className={poppins.className} lang="en">
-      <body >
-      <Container>
-          <main className="
-            px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-60
-          bg-light-color text-dark-color dark:bg-dark-color
-            transition-colors  
-            pt-24 py-5
-           dark:text-light-color min-h-screen">
-            {children}
-          </main>
+    <html className={poppins.className} lang="en">
+      <body>
+        <Container>
+          {children}
         </Container>
       </body>
     </html>

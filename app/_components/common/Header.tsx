@@ -12,7 +12,7 @@ const Header = () => {
              z-50
              px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-60
              w-full items-center justify-center 
-             top-0 h-16 
+             top-0 h-20 
              text-md border-b
              border-slate-500
              border-opacity-20
