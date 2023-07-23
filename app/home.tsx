@@ -1,7 +1,7 @@
 'use client'
 import { useRef } from "react";
-import BlogCard from "./_components/BlogCard";
-import SearchBar from "./_components/SearchBar";
+import BlogCard from "./_components/home/BlogCard";
+import SearchBar from "./_components/home/SearchBar";
 import {useInView,motion} from 'framer-motion'
 
 
@@ -62,7 +62,7 @@ export default function Home() {
                     blogs.map((blog,index)=>(
                         <>
                             <div
-                             
+                            key={index}
                             className={`col-span-6 ${index !== 0 && index!== 1 && "lg:col-span-4"}`}>
                                 <BlogCard/>
                             </div>

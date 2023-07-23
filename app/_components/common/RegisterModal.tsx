@@ -125,7 +125,7 @@ export default function RegisterModal() {
                                                 onClick={() => closeModal()}
                                                 type='submit'
                                             >
-                                                Login
+                                                Register
                                             </button>
                                         </form>
                                     </div>

@@ -1,12 +1,10 @@
 'use client'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
-import { authLogin } from '../../_api/auth'
-import { useRouter } from 'next/navigation'
-import { login } from '../../_stores/user/actions'
-import { toast } from 'react-toastify'
+import { useFormik } from 'formik'
+import FileInput from './FileInput'
 
-export default function LoginModal() {
+const SectionModal = () => {
     let [isOpen, setIsOpen] = useState(false)
 
     function closeModal() {
@@ -17,26 +15,16 @@ export default function LoginModal() {
         setIsOpen(true)
     }
 
-    const [formData, setFormData] = useState({})
-    const router = useRouter()
-    const handleChange = (e: any) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
-    }
-    const handleSubmit = async (e: any) => {
-        e.preventDefault()
-        try {
-            const response = await authLogin(formData)
-            console.log(response)
-            login(response.data.data.access_token)
-            router.push("/")
-            toast.success("Login successfully")
-        } catch (error) {
-            console.log(error)
+    const formik = useFormik({
+        initialValues: {
+            title:"",
+            content:"",
+            image:""
+        },
+        onSubmit:(values:any)=>{
+            console.log(values)
         }
-    }
+    })
 
     return (
         <>
@@ -44,10 +32,10 @@ export default function LoginModal() {
                 <button
                     type="button"
                     onClick={openModal}
-                    className='nav-item'
-                    
+                    className='custom-button w-full'
+
                 >
-                    Login
+                    Add Section
                 </button>
             </div>
 
@@ -76,39 +64,32 @@ export default function LoginModal() {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel className="w-full max-w-md  overflow-hidden rounded-2xl bg-light-color dark:bg-dark-color p-6 text-left align-middle shadow-xl transition-all">
+                                <Dialog.Panel className="w-full max-w-2xl  overflow-hidden rounded-2xl bg-light-color dark:bg-dark-color p-6 text-left align-middle shadow-xl transition-all">
                                     <Dialog.Title
                                         as="h1"
                                         className="text-2xl text-center font-bold leading-6 border-b-2 pb-2  text-dark-color dark:text-light-color"
                                     >
-                                        Login
+                                        Add section
                                     </Dialog.Title>
                                     <div className="flex flex-col">
-                                        <form onSubmit={handleSubmit} className="flex border-b-2 rounded-md md:p-10 p-4  gap-4 w-full bg flex-col" action="">
+                                        <form onSubmit={formik.handleSubmit} className="flex border-b-2 rounded-md md:p-10 p-4  gap-4 w-full bg flex-col" action="">
                                             <input type="text"
-                                                name="email"
+                                                name="title"
                                                 className="custom-input"
-                                                placeholder="Email"
-                                                onChange={handleChange}
-                                                autoComplete="off" 
-                                            />
-                                            <input type="password"
-                                                name="password"
-                                                className='custom-input'
-                                                placeholder=" Password"
-                                                onChange={handleChange}
+                                                placeholder="Title"
+                                                onChange={formik.handleChange}
                                                 autoComplete="off"
                                             />
+                                            <textarea rows={5} onChange={formik.handleChange} name='content' className='custom-input w-full' placeholder='Content' />
+                                            <FileInput/>
                                             <button className="custom-button"
                                                 onClick={() => closeModal()}
-                                                type='submit'          
+                                                type='submit'
                                             >
-                                                Login
+                                                Create Section
                                             </button>
                                         </form>
-                                        <div className='flex flex-row items-center p-2'>
-                                                <span className='text-sky-700'>Create a account</span>
-                                        </div>
+                                       
                                     </div>
                                 </Dialog.Panel>
                             </Transition.Child>
@@ -119,3 +100,5 @@ export default function LoginModal() {
         </>
     )
 }
+
+export default SectionModal
