@@ -4,6 +4,7 @@ import { Fragment } from 'react'
 import { logout } from '../../_stores/user/actions'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
+import Link from 'next/link'
 
 
 export default function ProfileDropdown() {
@@ -37,16 +38,16 @@ export default function ProfileDropdown() {
                             <Menu.Item>
                                 <button
                                     type='button'
-                                    className="custom-button w-full"
+                                    className="custom-button w-full shadow-none"
                                 >
                                     Edit Profile
                                 </button>
                             </Menu.Item>
                             <Menu.Item>
-                                <button className="custom-button w-full">Post Blog</button>
+                                <Link href={"/blog/post"}> <button className="custom-button w-full shadow-none">Post Blog</button></Link>
                             </Menu.Item>
                             <Menu.Item>
-                                <button className="custom-button w-full" onClick={() => handleLogout()}>Logout</button>
+                                <button className="custom-button w-full shadow-none" onClick={() => handleLogout()}>Logout</button>
                             </Menu.Item>
                         </div>
                     </Menu.Items>

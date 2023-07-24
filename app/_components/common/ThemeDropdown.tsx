@@ -30,7 +30,7 @@ export default function ThemeDropdown() {
 
                                 <button
                                     type='button'
-                                    className="custom-button gap-3 w-full items-center flex "
+                                    className="custom-button gap-3 w-full items-center flex shadow-none"
                                     onClick={() => setTheme("light")}
                                 >
                                     <BsSun size={20} />
@@ -41,7 +41,7 @@ export default function ThemeDropdown() {
                             <Menu.Item>
                                 <button
                                     onClick={() => setTheme("dark")}
-                                    className="custom-button gap-3 w-full items-center flex "
+                                    className="custom-button gap-3 w-full items-center flex  shadow-none"
                                 >
                                     <FiMoon size={20} />
                                     Dark
@@ -50,7 +50,7 @@ export default function ThemeDropdown() {
                             <Menu.Item>
                                 <button
                                     onClick={() => setTheme("system")}
-                                    className="custom-button gap-3 w-full items-center flex "
+                                    className="custom-button gap-3 w-full items-center flex shadow-none"
                                 >
                                     <HiOutlineComputerDesktop size={20} />
                                     System

@@ -40,12 +40,6 @@ export default function Home() {
         }
 
     ]
-    const squareVariants = {
-        visible: { opacity: 1, scale: 4, transition: { duration: 1 } },
-        hidden: { opacity: 0, scale: 0 }
-    };
-    const ref = useRef(null)
-    const isInView = useInView(ref)
 
     return (
         <div className="flex flex-col gap-8 justify-center items-center">
