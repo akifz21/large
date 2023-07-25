@@ -9,13 +9,4 @@ const uploadImage = async (data: any) =>
     })
   ).data;
 
-const uploadDoc = async (data: any) =>
-  await (
-    await axios.post("/upload/doc", data, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    })
-  ).data;
-
-export { uploadImage, uploadDoc };
+export { uploadImage };

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const baseURL = "http://localhost:4000/api";
 
@@ -7,13 +8,10 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  config.headers["Content-Type"] = "application/json";
   const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
-
-  //console.log(config)
   return config;
 });
 
@@ -21,16 +19,14 @@ instance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error?.response?.status === 401) {
-      //   toast.error('Your session has expired. Please login again.');
-
+      toast.error("Oturumunuz sona erdi. Lütfen tekrar giriş yapın.");
       localStorage.removeItem("token");
       window.location.href = "/login";
     }
-
     try {
-      //  toast.error(error.response.data.message);
+      toast.error(error?.response?.data?.message);
     } catch (e) {
-      // toast.error('Something went wrong. Please try again.');
+      toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
     }
     return error;
   }
