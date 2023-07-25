@@ -4,20 +4,22 @@ import { Fragment, useState } from 'react'
 import { useFormik } from 'formik'
 import FileInput from './FileInput'
 
-const SectionModal = ({ sections, setSections, type ,isOpen,setIsOpen}: {
+const SectionModal = ({ sections, setSections, type, isOpen, setIsOpen }: {
     sections: any,
     setSections: any,
     type: any,
-    isOpen:any,
-    setIsOpen:any
-   
+    isOpen: any,
+    setIsOpen: any
+
 }) => {
     const formik = useFormik({
         initialValues: {
             title: "",
             content: "",
-            image: ""
+            image: "",
+            type: type ? type : ""
         },
+        enableReinitialize:true,
         onSubmit: (values: any) => {
             formik.resetForm()
             setSections([...sections, values])
@@ -29,7 +31,7 @@ const SectionModal = ({ sections, setSections, type ,isOpen,setIsOpen}: {
         <>
 
             <Transition appear show={isOpen} as={Fragment}>
-                <Dialog  as="div" className="z-50" onClose={()=>{setIsOpen(false)}}>
+                <Dialog as="div" className="z-50" onClose={() => { setIsOpen(false) }}>
                     <Transition.Child
                         as={Fragment}
                         enter="ease-out duration-300"
@@ -53,11 +55,11 @@ const SectionModal = ({ sections, setSections, type ,isOpen,setIsOpen}: {
                                 leaveFrom="opacity-100 scale-100"
                                 leaveTo="opacity-0 scale-95"
                             >
-                                <Dialog.Panel  className="w-full max-w-2xl  overflow-hidden rounded-2xl bg-light-color dark:bg-dark-color p-6 text-left align-middle shadow-xl transition-all">
+                                <Dialog.Panel className="w-full max-w-2xl  overflow-hidden rounded-2xl bg-light-color dark:bg-dark-color p-6 text-left align-middle shadow-xl transition-all">
                                     <div className="flex flex-col">
                                         <form onSubmit={formik.handleSubmit} className="flex  rounded-md md:p-10 p-4  gap-4 w-full bg flex-col">
                                             {
-                                                (type === "Title" || type === "All") &&
+                                                (type === "TITLE_TEXT") &&
                                                 <input type="text"
                                                     name="title"
                                                     className="custom-input"
@@ -67,15 +69,15 @@ const SectionModal = ({ sections, setSections, type ,isOpen,setIsOpen}: {
                                                 />
                                             }
                                             {
-                                                (type === "All"  || type === "Text") &&
+                                                (type === "TITLE_TEXT" || type === "TEXT" || type === "CODE") &&
                                                 <textarea rows={5} onChange={formik.handleChange} name='content' className='custom-input w-full' placeholder='Content' />
                                             }
                                             {
-                                                (type === "Image" || type === "All") &&
-                                                <FileInput />
+                                                type === "IMAGE" &&
+                                                <FileInput onChange={()=>{}} name={"image"} />
                                             }
                                             <button className="custom-button"
-                                                onClick={() => {}}
+                                                onClick={() => {setIsOpen(false)}}
                                                 type='submit'
                                             >
                                                 Add

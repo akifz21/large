@@ -1,15 +1,36 @@
 'use client'
 import SectionModal from '@/app/_components/blog/SectionModal'
 import { useState } from 'react'
-import { useFormik } from 'formik'
+import { FormikValues, useFormik } from 'formik'
 import { useUser } from '@/app/_stores/user/hooks'
 import SectionDropdown from '@/app/_components/blog/SectionDropdown'
+import { addBlog } from '@/app/_api/blog'
+import { toast } from 'react-toastify'
+import { User } from '@/app/types'
+import FileInput from '@/app/_components/blog/FileInput'
+import Image from 'next/image'
+import { uploadImage } from '@/app/_api/upload'
 
 export default function Page() {
 
   const [sections, setSections] = useState([])
   const [isOpen, setIsOpen] = useState(false)
-  const [type,setType] = useState("")
+  const [type, setType] = useState("")
+  const [file, setFile] = useState("")
+  const [fileUrl, setFileUrl] = useState("")
+  const user: User = useUser()
+
+  const handleImageChange = (e: any) => {
+    const file = e.target.files[0]
+    const url = URL.createObjectURL(file)
+    setFile(file)
+    setFileUrl(url)
+  }
+
+  const removeImage = () => {
+    setFile("")
+    setFileUrl("")
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -17,12 +38,24 @@ export default function Page() {
       sections: [],
       image: "",
       published: true,
-      authorId: 1,
+      authorId: user ? user?.id : 0,
       tags: []
     },
-    onSubmit: (values: any) => {
+    onSubmit: async (values: FormikValues) => {
       values.sections = sections
-      console.log(values)
+     
+      const formData = new FormData()
+      formData.append("image",file)
+      try {
+        console.log(formData.get("image"))
+        const urlRes = await uploadImage(formData)
+        values.image = urlRes.data.url
+        const res = await addBlog(values)
+        toast.success(res.data.message)
+      } catch (error) {
+        console.log(formData)
+        console.log(error)
+      }
     }
   })
 
@@ -32,15 +65,34 @@ export default function Page() {
   }
 
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col min-h-[110vh] gap-4'>
       <form onSubmit={formik.handleSubmit} className='flex flex-col w-full items-center justify-center gap-4'>
-        <input type="text"
-          onChange={formik.handleChange}
-          name='tilte'
-          autoComplete='false'
-          className='custom-input p-0 font-bold text-4xl w-full border-none shadow-none focus:outline-none focus:ring-0'
-          placeholder='Main Title'
-        />
+        <div className='flex flex-col text-center gap-4'>
+          <input type="text"
+            onChange={formik.handleChange}
+            name='title'
+            value={formik.values.title}
+            autoComplete='false'
+            className='custom-input p-0 font-extrabold  text-center text-5xl  border-none shadow-none focus:outline-none focus:ring-0'
+            placeholder='Main Title'
+          />
+          <div>
+           
+            <p className='opacity-75'>30 November 2021</p>
+          </div>
+          <h1 className='text-4xl font-extrabold'>. . .</h1>
+        </div>
+        {
+          !file ?
+            <FileInput onChange={handleImageChange} name={"image"} />
+            :
+            <>
+              <div className='w-full relative  h-[400px]'>
+                <Image src={fileUrl} alt='blog image' className='rounded-lg' objectFit='cover' fill />
+              </div>
+              <button type='button' onClick={() => removeImage()} className='custom-button w-fit text-white dark:bg-red-900 bg-red-600'>Remove</button>
+            </>
+        }
         <div className='flex flex-col gap-4 w-full'>
           {
             sections.map((section: any, index) => (
@@ -50,14 +102,14 @@ export default function Page() {
                   <div className='w-full content'>{section?.content}</div>
                 </div>
                 <div className=''>
-                  <button onClick={() => handleDelete(section)} className='custom-button w-fit text-white bg-red-600'>Delete</button>
+                  <button type='button' onClick={() => handleDelete(section)} className='custom-button w-fit text-white dark:bg-red-900 bg-red-600'>Delete</button>
                 </div>
               </div>
             ))
           }
         </div>
         <div className='w-full flex items-center justify-center'>
-          <SectionDropdown setType={setType} setIsOpen={setIsOpen}/>
+          <SectionDropdown setType={setType} setIsOpen={setIsOpen} />
         </div>
         <button type='submit' className=' custom-button bg-green-600 dark:bg-green-800 text-white'>Post</button>
 

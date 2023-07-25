@@ -5,12 +5,12 @@ import { BsPlusCircle } from 'react-icons/bs'
 import SectionModal from './SectionModal'
 
 
-const SectionDropdown = ({setIsOpen,setType}: {
-    setIsOpen:any,
-    setType:any
+const SectionDropdown = ({ setIsOpen, setType }: {
+    setIsOpen: any,
+    setType: any
 }) => {
 
-    const handleOpen = (type:any)=>{
+    const handleOpen = (type: any) => {
         setIsOpen(true)
         setType(type)
     }
@@ -38,10 +38,10 @@ const SectionDropdown = ({setIsOpen,setType}: {
                                 <div className="inset-0 flex items-center justify-center">
                                     <button
                                         type="button"
-                                        onClick={()=>handleOpen("Title")}
+                                        onClick={() => handleOpen("TITLE_TEXT")}
                                         className='custom-button w-full shadow-none'
                                     >
-                                        Title
+                                        Subtitle and Text
                                     </button>
                                 </div>
                             </Menu.Item>
@@ -49,7 +49,7 @@ const SectionDropdown = ({setIsOpen,setType}: {
                                 <div className="inset-0 flex items-center justify-center">
                                     <button
                                         type="button"
-                                        onClick={() => handleOpen("Text")}
+                                        onClick={() => handleOpen("TEXT")}
                                         className='custom-button w-full shadow-none'
                                     >
                                         Text
@@ -60,7 +60,7 @@ const SectionDropdown = ({setIsOpen,setType}: {
                                 <div className="inset-0 flex items-center justify-center">
                                     <button
                                         type="button"
-                                        onClick={() => handleOpen("Image")}
+                                        onClick={() => handleOpen("IMAGE")}
                                         className='custom-button w-full shadow-none'
                                     >
                                         Image
@@ -71,14 +71,14 @@ const SectionDropdown = ({setIsOpen,setType}: {
                                 <div className="inset-0 flex items-center justify-center">
                                     <button
                                         type="button"
-                                        onClick={() => handleOpen("All")}
+                                        onClick={() => handleOpen("CODE")}
                                         className='custom-button w-full shadow-none'
                                     >
-                                        All
+                                        Code
                                     </button>
                                 </div>
                             </Menu.Item>
-
+                          
                         </div>
                     </Menu.Items>
                 </Transition>
