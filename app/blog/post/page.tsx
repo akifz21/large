@@ -4,13 +4,13 @@ import { useState } from "react";
 import { FormikValues, useFormik } from "formik";
 import { useUser } from "@/app/_stores/user/hooks";
 import SectionDropdown from "@/app/_components/blog/SectionDropdown";
-import { addBlog } from "@/app/_api/blog";
 import { toast } from "react-toastify";
 import { User } from "@/app/types";
 import FileInput from "@/app/_components/blog/FileInput";
 import Image from "next/image";
 import { uploadImage } from "@/app/_api/upload";
 import { useRouter } from "next/navigation";
+import { addBlog } from "@/app/_api/blog";
 
 export default function Page() {
   const [sections, setSections] = useState([]);
@@ -39,12 +39,12 @@ export default function Page() {
       sections: [],
       image: "",
       published: true,
-      authorId: `80ba909e-aad1-49e0-bf65-702754394a4f`,
+      authorId: (user && user.id) || "",
       tags: [],
     },
     onSubmit: async (values: FormikValues) => {
       values.sections = sections;
-
+      console.log(sections);
       const formData = new FormData();
       formData.append("image", file);
 
@@ -115,10 +115,21 @@ export default function Page() {
               key={index}
               className="self-start flex justify-between items-center flex-row w-full"
             >
-              <div>
-                <h3 className="font-semibold text-3xl">{section?.title}</h3>
-                <div className="w-full content">{section?.content}</div>
-              </div>
+              {section.type !== "IMAGE" ? (
+                <div>
+                  <h3 className="font-semibold text-3xl">{section?.title}</h3>
+                  <div className="w-full content">{section?.content}</div>
+                </div>
+              ) : (
+                <div className="w-full relative  h-[400px]">
+                  <Image
+                    src={section?.image}
+                    alt="blog image"
+                    className="rounded-lg"
+                    fill
+                  />
+                </div>
+              )}
               <div className="">
                 <button
                   type="button"

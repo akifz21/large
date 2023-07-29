@@ -1,12 +1,11 @@
-import Link from 'next/link';
-import { Auth } from './Auth';
-import ThemeDropdown from './ThemeDropdown';
-
+import Link from "next/link";
+import { Auth } from "./Auth";
+import ThemeDropdown from "./ThemeDropdown";
 
 const Header = () => {
-
-    return (
-        <header className='
+  return (
+    <header
+      className="
              fixed
              flex flex-row 
              z-50
@@ -18,31 +17,22 @@ const Header = () => {
              border-opacity-20
              shadow-md
              bg-light-color text-dark-color  dark:bg-dark-color transition-colors dark:text-light-color
-             '>
+             "
+    >
+      <div className="flex flex-row  items-center gap-10  transition-opacity">
+        <div className="nav-item">About</div>
 
-            <div className='flex flex-row  items-center gap-10  transition-opacity'>
-                <div className='nav-item'>
-                    Blogs
-                </div>
-                <div className='nav-item'>
-                    About
-                </div>
-               
-                <div className='nav-item'>
-                    Contact
-                </div>
-                <h4 className='cursor-pointer font-bold text-xl'>
-                    <Link href={'/'}>B-LOG</Link>
-                </h4>
-                <Auth />
-                <div >
-                    <ThemeDropdown />
-                </div>
+        <div className="nav-item">Contact</div>
+        <h4 className="cursor-pointer font-bold text-xl">
+          <Link href={"/"}>B-LOG</Link>
+        </h4>
+        <Auth />
+        <div>
+          <ThemeDropdown />
+        </div>
+      </div>
+    </header>
+  );
+};
 
-
-            </div>
-        </header>
-    )
-}
-
-export default Header
+export default Header;
