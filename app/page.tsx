@@ -1,8 +1,15 @@
-import Home from './home'
+import Home from "./home";
+import { Blog } from "./types";
 
-export default function Page() {
+async function getBlogs() {
+  const res = await fetch("http://localhost:4000/api/blogs", {
+    cache: "no-store",
+  });
+  return res.json();
+}
 
-  return (
-   <Home/>
-  );
+export default async function Page() {
+  const data = await getBlogs();
+  const blogs: Blog[] = data.data;
+  return <Home blogs={blogs} />;
 }

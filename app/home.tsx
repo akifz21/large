@@ -1,49 +1,10 @@
 "use client";
-import { useRef } from "react";
 import BlogCard from "./_components/home/BlogCard";
 import SearchBar from "./_components/home/SearchBar";
-import { useInView, motion } from "framer-motion";
+import { Blog } from "./types";
 
-export default function Home() {
-  const blogs = [
-    {
-      id: 1,
-      title: "Lorem ipsum dolor sit amet.",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, corporis.",
-    },
-    {
-      id: 2,
-      title: "Lorem ipsum dolor sit amet.",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, corporis.",
-    },
-    {
-      id: 3,
-      title: "Lorem ipsum dolor sit amet.",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, corporis.",
-    },
-    {
-      id: 4,
-      title: "Lorem ipsum dolor sit amet.",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, corporis.",
-    },
-    {
-      id: 5,
-      title: "Lorem ipsum dolor sit amet.",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, corporis.",
-    },
-    {
-      id: 6,
-      title: "Lorem ipsum dolor sit amet.",
-      content:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, corporis.",
-    },
-  ];
-
+export default function Home({ blogs }: { blogs: Blog[] }) {
+  console.log(blogs);
   return (
     <div className="flex flex-col gap-8 justify-center items-center">
       <div className="text-center">
@@ -54,25 +15,16 @@ export default function Home() {
       </div>
       <SearchBar />
       <div className="grid items-center justify-center grid-cols-6 lg:grid-cols-12 gap-6">
-        {blogs.map((blog, index) => (
+        {blogs.map((blog: Blog, index: any) => (
           <div
             key={index}
             className={`col-span-6 ${
               index !== 0 && index !== 1 && "lg:col-span-4"
             }`}
           >
-            <BlogCard />
+            <BlogCard blog={blog} />
           </div>
         ))}
-
-        {/* <div className="col-span-6  "><BlogCard /></div>
-                <div className="col-span-6  "><BlogCard /></div>
-
-                <div className="col-span-6 lg:col-span-4  "><BlogCard /></div>
-                <div className="lg:col-span-4  col-span-6 "><BlogCard /></div>
-
-                <div className="lg:col-span-4 col-span-6 "><BlogCard /></div>
-                <div className="lg:col-span-4 col-span-6"><BlogCard /></div> */}
       </div>
       <div className="flex flex-row items-center justify-center border rounded-md shadow-lg  w-1/2 gap-4">
         <div className="flex flex-col gap-2 p-10 items-center">

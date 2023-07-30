@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode"
 
 const initialState = {
     isLoggedIn:   false,
-    user: { id: 0, email: "", last_name: "", first_name:"" }
+    user: { id: "", email: "", last_name: "", first_name:"" }
 }
 
 const user = createSlice({
@@ -19,7 +19,7 @@ const user = createSlice({
         },
         _logout: (state) => {
             state.isLoggedIn = false
-            state.user = { id: 0, email: "", last_name: "", first_name: "" }
+            state.user = { id: "", email: "", last_name: "", first_name: "" }
             localStorage.removeItem("user")
         },
         _setInitial : (state)=>{
