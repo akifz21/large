@@ -1,14 +1,32 @@
 import Image from "next/image";
 import image from "@/public/2fda477a7e32f813abb9a8ef425939e6a91c7973-987x1481.avif";
+import { toast } from "react-toastify";
+import { Blog } from "@/app/types";
 
-export default function Page({ params }: { params: { id: string } }) {
+async function getBlog(id: string) {
+  try {
+    const res = await fetch(`http://localhost:4000/api/blogs/${id}`, {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export default async function Page({ params }: { params: { id: string } }) {
+  const res = await getBlog(params.id);
+  const blog: Blog = res.data;
   return (
     <div className="flex flex-col items-center gap-5">
       <div className="flex flex-col text-center gap-4">
-        <h1 className="text-5xl font-extrabold">Blog Title</h1>
+        <h1 className="text-5xl font-extrabold">{blog.title}</h1>
         <div>
           <p className="opacity-75  text-lg">Mehmet Akif Özdemir</p>
-          <p className="opacity-75">30 November 2021</p>
+          <p className="opacity-75">{blog.createdAt}</p>
         </div>
       </div>
       <h1 className="text-4xl font-extrabold">. . .</h1>
@@ -21,49 +39,30 @@ export default function Page({ params }: { params: { id: string } }) {
           fill
         />
       </div>
-      <div className="flex mt-4 flex-col gap-4 font-medium text-xl">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-          cupiditate provident obcaecati magni, ipsam quae voluptatem fuga minus
-          mollitia voluptates doloremque quisquam soluta. Quis velit corrupti,
-          aspernatur voluptatibus amet magnam, ab quisquam repellat illum
-          accusantium tempora, praesentium sunt? Enim esse saepe doloribus,
-          culpa optio aut in corrupti. Fugiat, ipsum numquam. Molestias quia
-          eligendi neque ducimus sit est, aut nesciunt totam tempora, vitae
-          illum alias soluta? Voluptatibus, obcaecati facere! Iure explicabo,
-          assumenda praesentium odit voluptas libero alias quidem repellat
-          laudantium doloribus voluptatum dignissimos pariatur possimus numquam
-          optio esse! Et quam neque corporis aperiam natus voluptatem. Iure
-          nulla odio officia repudiandae autem?
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-          cupiditate provident obcaecati magni, ipsam quae voluptatem fuga minus
-          mollitia voluptates doloremque quisquam soluta. Quis velit corrupti,
-          aspernatur voluptatibus amet magnam, ab quisquam repellat illum
-          accusantium tempora, praesentium sunt? Enim esse saepe doloribus,
-          culpa optio aut in corrupti. Fugiat, ipsum numquam. Molestias quia
-          eligendi neque ducimus sit est, aut nesciunt totam tempora, vitae
-          illum alias soluta? Voluptatibus, obcaecati facere! Iure explicabo,
-          assumenda praesentium odit voluptas libero alias quidem repellat
-          laudantium doloribus voluptatum dignissimos pariatur possimus numquam
-          optio esse! Et quam neque corporis aperiam natus voluptatem. Iure
-          nulla odio officia repudiandae autem?
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
-          cupiditate provident obcaecati magni, ipsam quae voluptatem fuga minus
-          mollitia voluptates doloremque quisquam soluta. Quis velit corrupti,
-          aspernatur voluptatibus amet magnam, ab quisquam repellat illum
-          accusantium tempora, praesentium sunt? Enim esse saepe doloribus,
-          culpa optio aut in corrupti. Fugiat, ipsum numquam. Molestias quia
-          eligendi neque ducimus sit est, aut nesciunt totam tempora, vitae
-          illum alias soluta? Voluptatibus, obcaecati facere! Iure explicabo,
-          assumenda praesentium odit voluptas libero alias quidem repellat
-          laudantium doloribus voluptatum dignissimos pariatur possimus numquam
-          optio esse! Et quam neque corporis aperiam natus voluptatem. Iure
-          nulla odio officia repudiandae autem?
-        </p>
+      <div className="flex mt-4 flex-col gap-4 w-full">
+        {blog.sections.map((section: any, index) => (
+          <div
+            key={index}
+            className="self-start flex justify-between items-center flex-row w-full"
+          >
+            {section.type !== "IMAGE" ? (
+              <div>
+                <h3 className="font-semibold text-3xl">{section?.title}</h3>
+                <p className="leading-relaxed text-lg">{section?.content}</p>
+              </div>
+            ) : (
+              <div className="w-full relative  h-[400px]">
+                <Image
+                  src={section?.image}
+                  alt="blog image"
+                  className="rounded-lg"
+                  fill
+                  objectFit="contain"
+                />
+              </div>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );

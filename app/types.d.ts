@@ -12,6 +12,12 @@ export interface Blog{
     image:string,
     published:boolean,
     authorId:string,
-    tags:string[]
+    tags:string[],
+    comments:string[],
+    likes:string[],
+    createdAt:string,
+    updatedAt:string,
+    searchable_text:string,
+    
 
 }

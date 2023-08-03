@@ -127,6 +127,7 @@ export default function Page() {
                     alt="blog image"
                     className="rounded-lg"
                     fill
+                    objectFit="contain"
                   />
                 </div>
               )}

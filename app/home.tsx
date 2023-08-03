@@ -14,14 +14,9 @@ export default function Home({ blogs }: { blogs: Blog[] }) {
         </p>
       </div>
       <SearchBar />
-      <div className="grid items-center justify-center grid-cols-6 lg:grid-cols-12 gap-6">
+      <div className="grid items-center justify-center grid-cols-12 lg:grid-cols-12 gap-6">
         {blogs.map((blog: Blog, index: any) => (
-          <div
-            key={index}
-            className={`col-span-6 ${
-              index !== 0 && index !== 1 && "lg:col-span-4"
-            }`}
-          >
+          <div key={index} className="lg:col-span-4 md:col-span-6 col-span-12">
             <BlogCard blog={blog} />
           </div>
         ))}
