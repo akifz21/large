@@ -18,6 +18,5 @@ export interface Blog{
     createdAt:string,
     updatedAt:string,
     searchable_text:string,
-    
-
+    author:User
 }
