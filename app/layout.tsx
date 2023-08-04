@@ -1,13 +1,24 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { Container } from "./_components/common/Container";
 
 const poppins = Poppins({
-  weight: ["100", "200", "300", "400", "500", "600", "800", "900", '400', '700'],
-  subsets: ['latin'],
-})
+  weight: [
+    "100",
+    "200",
+    "300",
+    "400",
+    "500",
+    "600",
+    "800",
+    "900",
+    "400",
+    "700",
+  ],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,14 +30,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
-
   return (
     <html className={poppins.className} lang="en">
       <body>
-        <Container>
-          {children}
-        </Container>
+        <Container>{children}</Container>
       </body>
     </html>
   );
