@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "react-toastify/dist/ReactToastify.css";
-import { Container } from "./_components/common/Container";
+import Container from "./_components/common/Container";
 
 const poppins = Poppins({
   weight: [
@@ -32,9 +32,7 @@ export default function RootLayout({
 }) {
   return (
     <html className={poppins.className} lang="en">
-      <body>
-        <Container>{children}</Container>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

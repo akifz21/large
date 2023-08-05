@@ -1,5 +1,5 @@
-import Home from "./home";
-import { Blog } from "./types";
+import Home from "./_home";
+import { Blog } from "../types";
 
 async function getBlogs() {
   const res = await fetch("http://localhost:4000/api/blogs", {

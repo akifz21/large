@@ -1,7 +1,7 @@
 "use client";
-import BlogCard from "./_components/home/BlogCard";
-import SearchBar from "./_components/home/SearchBar";
-import { Blog } from "./types";
+import BlogCard from "../_components/home/BlogCard";
+import SearchBar from "../_components/home/SearchBar";
+import { Blog } from "../types";
 
 export default function Home({ blogs }: { blogs: Blog[] }) {
   console.log(blogs);

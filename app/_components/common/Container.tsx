@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import { SiteProvider } from "@/app/_contexts/SiteContext";
 
-export const Container = ({ children }: { children: any }) => {
+const Container = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <SiteProvider>
@@ -30,3 +30,5 @@ export const Container = ({ children }: { children: any }) => {
     </>
   );
 };
+
+export default Container;
