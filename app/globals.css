@@ -4,7 +4,7 @@
 
 @layer components {
   .badge {
-    @apply  px-2 w-20 my-2 bg-blue-500 text-white font-semibold rounded-md ;
+    @apply inline-flex items-center rounded-xl bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10
   }
 
   .nav-item{
@@ -12,7 +12,7 @@
   }
 
   .custom-button{
-    @apply rounded-md bg-light-color px-4 border py-2 text-sm font-medium w-1/2 shadow-xl transition-all self-center text-dark-color hover:opacity-80 dark:bg-black dark:border-none dark:text-light-color
+    @apply rounded-md bg-light-color px-4 border py-2 text-sm font-medium shadow-xl transition-all self-center text-dark-color hover:opacity-80 dark:bg-black dark:border-none dark:text-light-color
   }
 
   .custom-input{

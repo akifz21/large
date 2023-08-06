@@ -11,6 +11,7 @@ import Image from "next/image";
 import { uploadImage } from "@/app/_api/upload";
 import { useRouter } from "next/navigation";
 import { addBlog } from "@/app/_api/blog";
+import { formatDateForShow } from "@/app/_lib/utils";
 
 export default function Page() {
   const [sections, setSections] = useState([]);
@@ -18,6 +19,7 @@ export default function Page() {
   const [type, setType] = useState("");
   const [file, setFile] = useState("");
   const [fileUrl, setFileUrl] = useState("");
+  const [tag,setTag] = useState("")
   const user: User = useUser();
   const router = useRouter();
 
@@ -27,6 +29,11 @@ export default function Page() {
     setFile(file);
     setFileUrl(url);
   };
+
+ 
+  const handleTagChange = (e:any)=>{
+    setTag(e.target.value)
+  }
 
   const removeImage = () => {
     setFile("");
@@ -39,19 +46,17 @@ export default function Page() {
       sections: [],
       image: "",
       published: true,
-      authorId: (user && user.id) || "",
+      authorId: (user && user?.id) || "",
       tags: [],
     },
-    onSubmit: async (values: FormikValues) => {
+    onSubmit: async (values) => {
       values.sections = sections;
-      console.log(sections);
       const formData = new FormData();
       formData.append("image", file);
 
       try {
         const data = await uploadImage(formData);
         values.image = data.url;
-
         await addBlog(values);
         toast.success(`Blog added successfully`);
         router.push(`/`);
@@ -83,7 +88,9 @@ export default function Page() {
             placeholder="Main Title"
           />
           <div>
-            <p className="opacity-75">30 November 2021</p>
+            <p className="opacity-75">
+              {formatDateForShow(new Date().toDateString())}
+            </p>
           </div>
           <h1 className="text-4xl font-extrabold">. . .</h1>
         </div>
@@ -146,9 +153,22 @@ export default function Page() {
         <div className="w-full flex items-center justify-center">
           <SectionDropdown setType={setType} setIsOpen={setIsOpen} />
         </div>
+         <div className="flex flex-row gap-4">
+        <input type="text" onChange={handleTagChange} value={tag} name="tag" id="tag" className="custom-input" />
+        {
+          formik?.values?.tags?.map((tag,i)=>(
+            <span className="badge" key={i}>{tag}</span>
+          ))
+        }
+        <button className="custom-button" type="button" onClick={()=>{
+          formik.setFieldValue("tags",[...formik.values.tags,tag]);
+          setTag("");
+      }}>
+        Add Tag</button>
+      </div>
         <button
           type="submit"
-          className=" custom-button bg-green-600 dark:bg-green-800 text-white"
+          className="w-1/2 custom-button bg-green-600 dark:bg-green-800 text-white"
         >
           Post
         </button>
@@ -161,6 +181,7 @@ export default function Page() {
         setSections={setSections}
         type={type}
       />
+     
     </div>
   );
 }

@@ -1,10 +1,12 @@
-import React from 'react'
+import React from "react";
 
 const Footer = () => {
-    return (
-        <footer className="
+  return (
+    <footer
+      className="
         h-24
         relative
+        -z-10
         bottom-0
         w-full
          flex items-center
@@ -14,13 +16,11 @@ const Footer = () => {
             transition-colors dark:text-light-color
             border-t 
             "
-        >
+    >
+      <p>&copy; 2023 b-log. All rights reserved.</p>
+      <p>Follow us on social media</p>
+    </footer>
+  );
+};
 
-            <p>&copy; 2023 b-log. All rights reserved.</p>
-            <p>Follow us on social media</p>
-
-        </footer>
-    )
-}
-
-export default Footer
+export default Footer;

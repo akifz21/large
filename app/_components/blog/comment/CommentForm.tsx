@@ -34,12 +34,15 @@ const CommentForm = ({
   });
 
   return (
-    <form onSubmit={formik.handleSubmit} className="flex flex-row gap-2">
+    <form
+      onSubmit={formik.handleSubmit}
+      className="flex flex-col md:flex-row gap-2"
+    >
       <textarea
         value={formik.values.content}
         placeholder="Add a comment..."
         name="content"
-        className="custom-input w-1/2 py-4 resize-none"
+        className="custom-input w-full md:w-1/2 py-4 resize-none"
         onChange={formik.handleChange}
       />
       <button
