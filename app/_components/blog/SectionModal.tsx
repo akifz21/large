@@ -93,7 +93,7 @@ const SectionModal = ({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-2xl  overflow-hidden rounded-2xl bg-light-color dark:bg-dark-color p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-2xl z-50  overflow-hidden rounded-2xl bg-light-color dark:bg-dark-color p-6 text-left align-middle shadow-xl transition-all">
                   <div className="flex flex-col">
                     <form
                       onSubmit={formik.handleSubmit}
@@ -147,7 +147,7 @@ const SectionModal = ({
                           </>
                         ))}
                       <button
-                        className="custom-button"
+                        className="custom-button z-50"
                         onClick={() => {
                           setIsOpen(false);
                         }}

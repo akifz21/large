@@ -13,10 +13,29 @@ export interface Blog{
     published:boolean,
     authorId:string,
     tags:string[],
-    comments:string[],
+    comments:Comment[],
     likes:string[],
     createdAt:string,
     updatedAt:string,
     searchable_text:string,
     author:User
 }
+
+
+interface Comment {
+  id: string;
+  userId: string;
+  blogId: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  user: User
+}
+
+interface CommentRequest {
+    userId:string,
+    blogId:string,
+    content:string
+}
+
+

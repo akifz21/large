@@ -22,7 +22,7 @@ export const formatDateForShow = (
   input: string | number,
   hourMunite = false
 ) => {
-  return new Date(input).toLocaleDateString("tr-TR", {
+  return new Date(input).toLocaleDateString("en-UK", {
     year: "numeric",
     month: "long",
     day: "numeric",

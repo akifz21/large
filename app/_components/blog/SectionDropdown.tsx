@@ -18,7 +18,7 @@ const SectionDropdown = ({
 
   return (
     <>
-      <Menu as="div" className="relative inline-block z-50 text-left">
+      <Menu as="div" className="relative inline-block z-0 text-left">
         <>
           <Menu.Button>
             <BsPlusCircle size={35} className="self-center" />
