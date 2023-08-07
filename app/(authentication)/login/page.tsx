@@ -1,5 +1,5 @@
 "use client";
-import { authLogin } from "@/app/api/auth/db-auth";
+import { authLogin } from "@/app/_api/auth";
 import { login } from "@/app/_stores/user/actions";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -27,6 +27,10 @@ const Login = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const loginViaGithub = async () => {
+    window.open("http://localhost:4000/api/auth/github", "_self");
   };
 
   return (
@@ -75,7 +79,7 @@ const Login = () => {
 
           <button
             className="bg-white w-full text-black shadow-xl border py-2 text-sm font-light rounded flex gap-1 items-center justify-center tracking-wider"
-            onClick={() => console.log("github")}
+            onClick={() => loginViaGithub()}
             type="button"
           >
             <AiFillGithub className="text-xl" /> Github

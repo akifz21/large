@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { AiFillGithub } from "react-icons/ai";
-import { createUser } from "@/app/api/user";
+import { createUser } from "@/app/_api/user";
 import Link from "next/link";
 
 const Signup = () => {
@@ -101,7 +101,6 @@ const Signup = () => {
 
           <button
             className="bg-white w-full text-black shadow-xl border py-2 text-sm font-light rounded flex gap-1 items-center justify-center tracking-wider"
-            onClick={() => console.log("github")}
             type="button"
           >
             <AiFillGithub className="text-xl" /> Github
