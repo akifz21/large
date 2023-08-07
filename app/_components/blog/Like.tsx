@@ -5,16 +5,21 @@ import { Blog, Like } from "@/app/types";
 import React, { useCallback, useEffect, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-toastify";
+import Spinner from "../common/Spinner";
 
 const Like = ({ blog }: { blog: Blog }) => {
   const user = useUser();
   const [likes, setLikes] = useState<Like[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const getLikes = useCallback(async () => {
+    setIsLoading(true);
     try {
       const res = await getBlogLikes(blog?.id);
       setLikes(res.data?.data);
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
   }, [blog]);
@@ -41,7 +46,7 @@ const Like = ({ blog }: { blog: Blog }) => {
         className="custom-button flex items-center gap-2 text-lg flex-row"
       >
         <AiOutlineHeart size={25} />
-        {likes?.length}
+        {isLoading ? <Spinner /> : likes?.length}
       </button>
     </>
   );
