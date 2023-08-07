@@ -4,11 +4,12 @@ import { formatDateForShow } from "@/app/_lib/utils";
 import { Blog } from "@/app/types";
 import Image from "next/image";
 import React from "react";
+import { BsTags } from "react-icons/bs";
 
 const Blog = ({ blog }: { blog: Blog }) => {
   return (
     <div className="flex flex-col items-center gap-5">
-      <div className="flex flex-col text-center gap-4">
+      <div className="flex flex-col  text-center gap-6">
         <h1 className="text-5xl font-extrabold">{blog?.title}</h1>
         <div>
           <p className="opacity-75  text-lg">
@@ -16,10 +17,18 @@ const Blog = ({ blog }: { blog: Blog }) => {
           </p>
           <p className="opacity-75">{formatDateForShow(blog?.createdAt)}</p>
         </div>
+
+        <div className="flex items-center justify-center flex-row gap-4">
+          <BsTags size={20} />
+          {blog?.tags?.map((tag) => (
+            <span className="badge">{tag}</span>
+          ))}
+        </div>
         <div className="flex items-center justify-center">
           <Like blog={blog} />
         </div>
       </div>
+
       <h1 className="text-4xl font-extrabold">. . .</h1>
       <div className="w-full relative  h-[400px]">
         <Image
