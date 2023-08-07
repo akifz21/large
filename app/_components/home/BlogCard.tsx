@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Blog } from "@/app/types";
 import { formatDateForShow } from "@/app/_lib/utils";
+import { AiOutlineHeart } from "react-icons/ai";
 
 const BlogCard = ({ blog }: { blog: Blog }) => {
   return (
@@ -14,18 +15,26 @@ const BlogCard = ({ blog }: { blog: Blog }) => {
           className="rounded-md hover:scale-105 transform transition-transform"
           alt="blog-banner"
         />
-        <div className="flex flex-col">
-          <h2
-            className="text-base
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-row justify-between">
+            <h2
+              className="text-base
          md:text-lg font-bold
          line-clamp-1
         "
-          >
-            {blog?.title}
-          </h2>
+            >
+              {blog?.title}
+            </h2>
+            <div className="flex flex-row items-center">
+              {blog?.likes?.length}
+              <AiOutlineHeart size={25} />
+            </div>
+          </div>
           <div className="flex flex-row gap-4">
-            {blog?.tags?.map((tag) => (
-              <span className="badge w-fit">{tag}</span>
+            {blog?.tags?.map((tag, i) => (
+              <span key={i} className="badge w-fit">
+                {tag}
+              </span>
             ))}
           </div>
           <span className="opacity-70">

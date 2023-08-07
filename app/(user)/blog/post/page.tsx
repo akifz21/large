@@ -19,7 +19,7 @@ export default function Page() {
   const [type, setType] = useState("");
   const [file, setFile] = useState("");
   const [fileUrl, setFileUrl] = useState("");
-  const [tag,setTag] = useState("")
+  const [tag, setTag] = useState("");
   const user: User = useUser();
   const router = useRouter();
 
@@ -30,10 +30,9 @@ export default function Page() {
     setFileUrl(url);
   };
 
- 
-  const handleTagChange = (e:any)=>{
-    setTag(e.target.value)
-  }
+  const handleTagChange = (e: any) => {
+    setTag(e.target.value);
+  };
 
   const removeImage = () => {
     setFile("");
@@ -153,19 +152,31 @@ export default function Page() {
         <div className="w-full flex items-center justify-center">
           <SectionDropdown setType={setType} setIsOpen={setIsOpen} />
         </div>
-         <div className="flex flex-row gap-4">
-        <input type="text" onChange={handleTagChange} value={tag} name="tag" id="tag" className="custom-input" />
-        {
-          formik?.values?.tags?.map((tag,i)=>(
-            <span className="badge" key={i}>{tag}</span>
-          ))
-        }
-        <button className="custom-button" type="button" onClick={()=>{
-          formik.setFieldValue("tags",[...formik.values.tags,tag]);
-          setTag("");
-      }}>
-        Add Tag</button>
-      </div>
+        <div className="flex flex-row gap-4">
+          <input
+            type="text"
+            onChange={handleTagChange}
+            value={tag}
+            name="tag"
+            id="tag"
+            className="custom-input"
+          />
+          {formik?.values?.tags?.map((tag, i) => (
+            <span className="badge" key={i}>
+              {tag}
+            </span>
+          ))}
+          <button
+            className="custom-button"
+            type="button"
+            onClick={() => {
+              formik.setFieldValue("tags", [...formik.values.tags, tag]);
+              setTag("");
+            }}
+          >
+            Add Tag
+          </button>
+        </div>
         <button
           type="submit"
           className="w-1/2 custom-button bg-green-600 dark:bg-green-800 text-white"
@@ -181,7 +192,6 @@ export default function Page() {
         setSections={setSections}
         type={type}
       />
-     
     </div>
   );
 }

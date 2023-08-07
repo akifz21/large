@@ -38,4 +38,8 @@ interface CommentRequest {
     content:string
 }
 
-
+interface Like {
+  id: string;
+  userId: string;
+  blogId: string;
+}

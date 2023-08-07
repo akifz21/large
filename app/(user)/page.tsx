@@ -1,8 +1,9 @@
 import Home from "./_home";
 import { Blog } from "../types";
+import { baseURL } from "../_api/axiosInstance";
 
 async function getBlogs() {
-  const res = await fetch("http://localhost:4000/api/blogs", {
+  const res = await fetch(`${baseURL}/blogs`, {
     cache: "no-store",
   });
   return res.json();

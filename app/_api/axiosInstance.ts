@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const baseURL = "http://localhost:4000/api";
+export const baseURL = "http://localhost:4000/api";
 
 const instance = axios.create({
   baseURL,

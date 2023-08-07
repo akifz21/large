@@ -1,5 +1,4 @@
-import CommentCard from "@/app/_components/blog/comment/CommentCard";
-import CommentForm from "@/app/_components/blog/comment/CommentForm";
+import Like from "@/app/_components/blog/Like";
 import Comments from "@/app/_components/blog/comment/Comments";
 import { formatDateForShow } from "@/app/_lib/utils";
 import { Blog } from "@/app/types";
@@ -16,6 +15,9 @@ const Blog = ({ blog }: { blog: Blog }) => {
             {blog?.author?.first_name + " " + blog?.author?.last_name}
           </p>
           <p className="opacity-75">{formatDateForShow(blog?.createdAt)}</p>
+        </div>
+        <div className="flex items-center justify-center">
+          <Like blog={blog} />
         </div>
       </div>
       <h1 className="text-4xl font-extrabold">. . .</h1>
