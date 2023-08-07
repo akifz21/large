@@ -33,15 +33,17 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center gap-2 w-2/3">
+    <div className="flex flex-col justify-center gap-1 w-2/3">
       <Link
         className="absolute bg-black text-sm text-white rounded-md right-7 top-7 font-light border shadow-lg px-4 py-2"
         href={"/login"}
       >
         Login
       </Link>
-      <h2 className="text-2xl font-medium text-center">Create an account</h2>
-      <p className="font-light opacity-50">
+      <h2 className="text-2xl font-medium text-center tracking-wide">
+        Create an account
+      </h2>
+      <p className="font-light opacity-50 text-center tracking-wide">
         Enter your credentials below to create your account
       </p>
 
@@ -85,21 +87,20 @@ const Signup = () => {
           />
 
           <button
-            className="bg-[#18181B] w-full text-white py-2 text-sm font-light rounded"
+            className="bg-[#18181B] w-full text-white py-2 text-sm font-light rounded tracking-wide"
             type="submit"
           >
             Create
           </button>
 
           <div className="border-b border-gray-400 relative text-center my-3">
-            <span className="bg-white px-2 text-gray-400 text-sm  absolute -translate-x-1/2 -translate-y-1/2">
+            <span className="bg-white px-2 text-gray-400 text-sm  absolute -translate-x-1/2 -translate-y-1/2 tracking-wider">
               OR CONTINUE WITH
             </span>
           </div>
 
           <button
-            className="bg-white w-full text-black shadow-xl border py-2 text-sm font-light rounded flex gap-1 items-center justify-center"
-            onClick={() => console.log("github")}
+            className="bg-white w-full text-black shadow-xl border py-2 text-sm font-light rounded flex gap-1 items-center justify-center tracking-wider"
             type="button"
           >
             <AiFillGithub className="text-xl" /> Github
