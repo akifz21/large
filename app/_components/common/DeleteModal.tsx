@@ -3,7 +3,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/navigation";
 import { Fragment, useState } from "react";
 import { FaRegTrashCan } from "react-icons/fa6";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 const DeleteModal = ({ id }: { id: string }) => {
   const [isOpen, setIsOpen] = useState(false);

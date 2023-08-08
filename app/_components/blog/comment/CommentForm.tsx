@@ -4,7 +4,7 @@ import { useUser } from "@/app/_stores/user/hooks";
 import { useFormik } from "formik";
 import React from "react";
 import { BsSend } from "react-icons/bs";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 const CommentForm = ({
   blogId,

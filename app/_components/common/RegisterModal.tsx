@@ -4,7 +4,7 @@ import { Fragment, useState } from "react";
 import { authLogin } from "../../_api/auth";
 import { useRouter } from "next/navigation";
 import { login } from "../../_stores/user/actions";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { createUser } from "@/app/_api/user";
 import Link from "next/link";
 

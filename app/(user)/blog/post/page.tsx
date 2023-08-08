@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FormikValues, useFormik } from "formik";
 import { useUser } from "@/app/_stores/user/hooks";
 import SectionDropdown from "@/app/_components/blog/SectionDropdown";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { User } from "@/app/types";
 import FileInput from "@/app/_components/blog/FileInput";
 import Image from "next/image";
@@ -49,7 +49,9 @@ export default function Page() {
       authorId: (user && user?.id) || "",
       tags: [],
     },
+    enableReinitialize: true,
     onSubmit: async (values) => {
+      values.authorId = user?.id;
       values.sections = sections;
       const formData = new FormData();
       formData.append("image", file);
@@ -57,8 +59,10 @@ export default function Page() {
       try {
         const data = await uploadImage(formData);
         values.image = data.url;
-        await addBlog(values);
-        toast.success(`Blog added successfully`);
+        const res = await addBlog(values);
+        if (res.status === 200) {
+          toast.success(`Blog added successfully`);
+        }
         router.push(`/`);
       } catch (error) {
         console.log(error);

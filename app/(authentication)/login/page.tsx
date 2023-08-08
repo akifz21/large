@@ -3,7 +3,7 @@ import { authLogin } from "@/app/_api/auth";
 import { login } from "@/app/_stores/user/actions";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { AiFillGithub } from "react-icons/ai";
 import Link from "next/link";
 

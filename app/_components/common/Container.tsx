@@ -4,6 +4,7 @@ import Theme from "../appearence/Theme";
 import Footer from "./Footer";
 import Header from "./Header";
 import { SiteProvider } from "@/app/_contexts/SiteContext";
+import { Toaster } from "react-hot-toast";
 
 const Container = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -12,7 +13,7 @@ const Container = ({ children }: { children: React.ReactNode }) => {
         <Providers>
           <Theme />
           <Header />
-          <ToastContainer />
+
           <main
             className="
             px-8 sm:px-16 md:px-36 xl:px-52 2xl:px-60

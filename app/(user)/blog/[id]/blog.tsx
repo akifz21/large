@@ -12,7 +12,6 @@ import React from "react";
 import { BsTags } from "react-icons/bs";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { FiEdit } from "react-icons/fi";
-import { toast } from "react-toastify";
 
 const Blog = ({ blog }: { blog: Blog }) => {
   const user = useUser();

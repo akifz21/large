@@ -3,7 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { logout } from "../../_stores/user/actions";
 import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import Link from "next/link";
 import { useUser } from "@/app/_stores/user/hooks";
 

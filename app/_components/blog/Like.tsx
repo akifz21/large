@@ -4,7 +4,7 @@ import { useUser } from "@/app/_stores/user/hooks";
 import { Blog, Like } from "@/app/types";
 import React, { useCallback, useEffect, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import Spinner from "../common/Spinner";
 
 const Like = ({ blog }: { blog: Blog }) => {
