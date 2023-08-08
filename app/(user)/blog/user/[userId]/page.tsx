@@ -1,6 +1,4 @@
 import { baseURL } from "@/app/_api/axiosInstance";
-import BlogCard from "@/app/_components/home/BlogCard";
-import SearchBar from "@/app/_components/home/SearchBar";
 import { Blog } from "@/app/types";
 import UserBlogs from "./userBlogs";
 

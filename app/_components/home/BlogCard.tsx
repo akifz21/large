@@ -7,7 +7,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 const BlogCard = ({ blog }: { blog: Blog }) => {
   return (
     <div className="flex flex-col w-full p-8">
-      <Link className="flex flex-col gap-4" href={`blog/${blog?.id}`}>
+      <Link className="flex flex-col gap-4" href={`/blog/${blog?.id}`}>
         <Image
           src={blog?.image}
           width={400}

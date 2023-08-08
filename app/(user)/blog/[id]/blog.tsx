@@ -1,16 +1,29 @@
+"use client";
+import { deleteBlog } from "@/app/_api/blog";
 import Like from "@/app/_components/blog/Like";
 import Comments from "@/app/_components/blog/comment/Comments";
+import DeleteModal from "@/app/_components/common/DeleteModal";
 import { formatDateForShow } from "@/app/_lib/utils";
+import { useUser } from "@/app/_stores/user/hooks";
 import { Blog } from "@/app/types";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { BsTags } from "react-icons/bs";
+import { FaRegTrashCan } from "react-icons/fa6";
+import { FiEdit } from "react-icons/fi";
+import { toast } from "react-toastify";
 
 const Blog = ({ blog }: { blog: Blog }) => {
+  const user = useUser();
+
+  const router = useRouter();
+
   return (
     <div className="flex flex-col items-center gap-5">
       <div className="flex flex-col  text-center gap-6">
-        <h1 className="text-5xl font-extrabold">{blog?.title}</h1>
+        <h1 className="text-5xl font-extrabold">{blog?.title} </h1>
+
         <div>
           <p className="opacity-75  text-lg">
             {blog?.author?.first_name + " " + blog?.author?.last_name}
@@ -24,8 +37,16 @@ const Blog = ({ blog }: { blog: Blog }) => {
             <span className="badge">{tag}</span>
           ))}
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex flex-row gap-4 items-center justify-center">
           <Like blog={blog} />
+          {user?.id === blog?.authorId && (
+            <div className="flex flex-row items-center gap-4  justify-center">
+              <DeleteModal id={blog?.id} />
+              <button className="custom-button">
+                <FiEdit size={25} />
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
