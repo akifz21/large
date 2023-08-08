@@ -6,7 +6,7 @@ import { Blog } from "@/app/types";
 import React from "react";
 
 const UserBlogs = ({ blogs }: { blogs: Blog[] }) => {
-  const user = useUser();
+  const user = blogs[0].author;
   return (
     <div className="flex flex-col gap-8 justify-center items-center">
       <div className="flex flex-col gap-2 items-center justify-center">
