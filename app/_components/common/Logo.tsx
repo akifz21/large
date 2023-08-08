@@ -11,7 +11,10 @@ type LogoProps = React.DetailedHTMLProps<
 
 const Logo = ({ className, ...props }: LogoProps) => {
   return (
-    <Link href={"/"} className="inline-flex gap-1 items-center">
+    <Link
+      href={"/"}
+      className={cn("inline-flex gap-1 items-center", className)}
+    >
       <LeftArrow size={30} />
       <span className={cn("font-borel relative top-2", className)} {...props}>
         b-log

@@ -1,6 +1,9 @@
-import { Auth } from "./Auth";
-import ThemeDropdown from "./ThemeDropdown";
+import dynamic from "next/dynamic";
 import Logo from "./Logo";
+import React from "react";
+import Spinner from "./Spinner";
+import Auth from "./Auth";
+import ThemeDropdown from "./ThemeDropdown";
 
 const Header = () => {
   return (
@@ -23,7 +26,10 @@ const Header = () => {
         <div className="nav-item ml-5">About</div>
         <div className="nav-item">Contact</div>
       </div>
-      <Auth />
+      <div className="flex gap-7 items-center">
+        <ThemeDropdown />
+        <Auth />
+      </div>
     </header>
   );
 };

@@ -8,13 +8,28 @@ import { HiOutlineComputerDesktop } from "react-icons/hi2";
 import { useSiteContext } from "@/app/_contexts/SiteContext";
 
 export default function ThemeDropdown() {
-  const { dispatch } = useSiteContext();
+  const { state, dispatch } = useSiteContext();
+
+  const getThemeIcon = () => {
+    switch (state.theme) {
+      case "light":
+        return <BsSun className="text-xl" />;
+      case "dark":
+        return <FiMoon className="text-xl" />;
+      case "system":
+        return <HiOutlineComputerDesktop className="text-xl" />;
+      default:
+        return <HiOutlineComputerDesktop className="text-xl" />;
+    }
+  };
   return (
     <>
       <Menu as="div" className="relative inline-block text-left">
-        <>
-          <Menu.Button className="nav-item">Theme</Menu.Button>
-        </>
+        <div className="rounded-full bg-gray-200 py-2 px-3 dark:bg-gray-700 text-black dark:text-white">
+          <Menu.Button className="nav-item relative top-1">
+            {getThemeIcon()}
+          </Menu.Button>
+        </div>
         <Transition
           as={Fragment}
           enter="transition ease-out duration-100"

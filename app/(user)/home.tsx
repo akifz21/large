@@ -6,7 +6,7 @@ import { Blog } from "../types";
 
 export default function Home({ blogs }: { blogs: Blog[] }) {
   return (
-    <div className="flex flex-col gap-8 justify-center items-center">
+    <div className="flex flex-col gap-12 justify-center items-center">
       <div className="text-center">
         <Logo />
         <p className="opacity-75 font-medium">
@@ -21,7 +21,7 @@ export default function Home({ blogs }: { blogs: Blog[] }) {
           </div>
         ))}
       </div>
-      <div className="flex flex-row items-center justify-center border rounded-md shadow-lg  w-1/2 gap-4">
+      <div className="flex flex-row items-center justify-center border rounded-md shadow-lg  w-1/2 gap-4 mt-20">
         <div className="flex flex-col gap-2 p-10 items-center">
           <h4 className="text-2xl font-bold">Subscribe To Our Newsletter</h4>
           <p className="w-full opacity-75">

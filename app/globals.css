@@ -10,7 +10,7 @@
   }
 
   .nav-item {
-    @apply opacity-70 hover:opacity-100 transition-opacity cursor-pointer text-sm;
+    @apply opacity-100 hover:opacity-80 transition-all duration-150 cursor-pointer text-sm;
   }
 
   .custom-button {

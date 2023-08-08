@@ -46,7 +46,7 @@ const Like = ({ blog }: { blog: Blog }) => {
         className="custom-button flex items-center gap-2 text-lg flex-row"
       >
         <AiOutlineHeart size={25} />
-        {isLoading ? <Spinner /> : likes?.length}
+        {isLoading ? <Spinner className="w-4 h-4" /> : likes?.length}
       </button>
     </>
   );

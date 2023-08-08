@@ -18,8 +18,8 @@ const Container = ({ children }: { children: React.ReactNode }) => {
             px-8 sm:px-16 md:px-36 xl:px-52 2xl:px-60
           bg-light-color text-dark-color dark:bg-dark-color
             transition-colors  
-           
-            py-28
+            pt-28
+            pb-14
            dark:text-light-color min-h-screen"
           >
             {children}

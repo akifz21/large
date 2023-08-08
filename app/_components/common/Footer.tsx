@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "./Logo";
 
 const Footer = () => {
   return (
@@ -14,10 +15,12 @@ const Footer = () => {
           px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-60
            bg-light-color text-dark-color dark:bg-dark-color
             transition-colors dark:text-light-color
-            border-t 
+            border-t tracking-wide
             "
     >
-      <p>&copy; 2023 b-log. All rights reserved.</p>
+      <div className="flex items-center gap-2">
+        <span>&copy; 2023 </span> <Logo className="text-sm top-1.5" />
+      </div>
       <p>Follow us on social media</p>
     </footer>
   );

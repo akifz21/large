@@ -8,7 +8,7 @@ import { setInitial } from "@/app/_stores/user/actions";
 import RegisterModal from "./RegisterModal";
 import Link from "next/link";
 
-export const Auth = () => {
+const Auth = () => {
   const isLoggedIn = useIsLoggedIn();
   useEffect(() => {
     setInitial();
@@ -42,3 +42,5 @@ export const Auth = () => {
     </div>
   );
 };
+
+export default Auth;

@@ -1,4 +1,4 @@
-import Home from "./_home";
+import Home from "./home";
 import { Blog } from "../types";
 import { baseURL } from "../_api/axiosInstance";
 

@@ -22,8 +22,7 @@ type StateType = {
 const INITIAL_STATE: StateType = {
   language: "tr",
   theme:
-    ((typeof window !== "undefined" &&
-      localStorage.getItem("theme")) as StateType["theme"]) ||
+    (localStorage.getItem("theme") as StateType["theme"]) ||
     ("system" as StateType["theme"]),
 };
 
