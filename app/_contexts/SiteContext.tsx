@@ -15,15 +15,16 @@ type ActionType = ThemeActionType | LanguageActionType;
 
 type StateType = {
   language: "tr" | "en";
-  //   theme: "light" | "dark" | "system";
-  theme: string;
+  theme: "light" | "dark" | "system";
+  // theme: string;
 };
 
 const INITIAL_STATE: StateType = {
   language: "tr",
   theme:
-    (typeof window !== "undefined" && localStorage.getItem("theme")) ||
-    "system",
+    ((typeof window !== "undefined" &&
+      localStorage.getItem("theme")) as StateType["theme"]) ||
+    ("system" as StateType["theme"]),
 };
 
 const SiteContext = createContext<{

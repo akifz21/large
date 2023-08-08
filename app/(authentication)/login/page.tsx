@@ -30,7 +30,7 @@ const Login = () => {
   };
 
   const loginViaGithub = async () => {
-    window.open("http://localhost:4000/api/auth/github", "_self");
+    window.open("http://localhost:4000/api/auth/github", "_blank");
   };
 
   return (
