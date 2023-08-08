@@ -1,4 +1,3 @@
-import { ToastContainer } from "react-toastify";
 import { Providers } from "../../_stores/provider";
 import Theme from "../appearence/Theme";
 import Footer from "./Footer";
@@ -9,11 +8,11 @@ import { Toaster } from "react-hot-toast";
 const Container = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
+      <Toaster />
       <SiteProvider>
         <Providers>
           <Theme />
           <Header />
-
           <main
             className="
             px-8 sm:px-16 md:px-36 xl:px-52 2xl:px-60

@@ -33,7 +33,6 @@ export default function RootLayout({
 }) {
   return (
     <html className={poppins.className} lang="en">
-      <Toaster />
       <body>{children}</body>
     </html>
   );
