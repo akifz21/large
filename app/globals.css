@@ -1,24 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Borel&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
   .badge {
-    @apply inline-flex items-center rounded-xl bg-gray-200 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-blue-700/10
+    @apply inline-flex items-center rounded-xl bg-gray-200 px-2 py-1 text-xs font-medium text-gray-700 ring-1 ring-inset ring-blue-700/10;
   }
 
-  .nav-item{
-    @apply opacity-70 hover:opacity-100 transition-opacity cursor-pointer
+  .nav-item {
+    @apply opacity-70 hover:opacity-100 transition-opacity cursor-pointer text-sm;
   }
 
-  .custom-button{
-    @apply rounded-md bg-light-color px-4 border py-2 text-sm font-medium shadow-xl transition-all self-center text-dark-color hover:opacity-80 dark:bg-black dark:border-none dark:text-light-color
+  .custom-button {
+    @apply rounded-md bg-light-color px-4 border py-2 text-sm font-medium shadow-xl transition-all self-center text-dark-color hover:opacity-80 dark:bg-black dark:border-none dark:text-light-color;
   }
 
-  .custom-input{
-    @apply py-2 text-sm text-dark-color shadow-md bg-light-color rounded-md px-3 border  dark:bg-dark-color dark:text-light-color focus:outline-none focus:ring-1
-
+  .custom-input {
+    @apply py-2 text-sm text-dark-color shadow-md bg-light-color rounded-md px-3 border  dark:bg-dark-color dark:text-light-color focus:outline-none focus:ring-1;
   }
-
- 
 }

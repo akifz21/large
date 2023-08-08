@@ -1,4 +1,5 @@
 "use client";
+import Logo from "../_components/common/Logo";
 import BlogCard from "../_components/home/BlogCard";
 import SearchBar from "../_components/home/SearchBar";
 import { Blog } from "../types";
@@ -7,7 +8,7 @@ export default function Home({ blogs }: { blogs: Blog[] }) {
   return (
     <div className="flex flex-col gap-8 justify-center items-center">
       <div className="text-center">
-        <h1 className="text-4xl font-black">B-LOG</h1>
+        <Logo />
         <p className="opacity-75 font-medium">
           a blog about software development
         </p>
