@@ -5,10 +5,11 @@ import { logout } from "../../_stores/user/actions";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Link from "next/link";
+import { useUser } from "@/app/_stores/user/hooks";
 
 export default function ProfileDropdown() {
   const router = useRouter();
-
+  const user = useUser();
   const handleLogout = () => {
     logout();
     router.push("/");
@@ -40,12 +41,14 @@ export default function ProfileDropdown() {
                 </button>
               </Menu.Item>
               <Menu.Item>
-                <button
-                  type="button"
-                  className="custom-button w-full shadow-none"
-                >
-                  My Blogs
-                </button>
+                <Link href={`/blog/user/${user?.id}`}>
+                  <button
+                    type="button"
+                    className="custom-button w-full shadow-none"
+                  >
+                    My Blogs
+                  </button>
+                </Link>
               </Menu.Item>
               <Menu.Item>
                 <Link href={"/blog/post"}>

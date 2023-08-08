@@ -24,8 +24,9 @@ const Container = ({ children }: { children: React.ReactNode }) => {
           >
             {children}
           </main>
+
+          <Footer />
         </Providers>
-        <Footer />
       </SiteProvider>
     </>
   );
