@@ -6,6 +6,7 @@ import LoginModal from "./LoginModal";
 import ProfileDropdown from "./ProfileDropdown";
 import { setInitial } from "@/app/_stores/user/actions";
 import RegisterModal from "./RegisterModal";
+import Link from "next/link";
 
 export const Auth = () => {
   const isLoggedIn = useIsLoggedIn();
@@ -15,9 +16,23 @@ export const Auth = () => {
   return (
     <div>
       {!isLoggedIn ? (
-        <div className="flex flex-row gap-10">
-          <LoginModal />
-          <RegisterModal />
+        <div className="flex flex-row items-center gap-7">
+          <Link
+            href={"/login"}
+            // type="button"
+            // onClick={openModal}
+            className="nav-item"
+          >
+            Login
+          </Link>
+          <Link
+            href={"/signup"}
+            // type="button"
+            // onClick={openModal}
+            className="nav-item bg-black rounded text-white py-2 px-4"
+          >
+            Sign Up
+          </Link>
         </div>
       ) : (
         <>

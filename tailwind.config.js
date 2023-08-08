@@ -10,12 +10,12 @@ module.exports = {
     extend: {
       colors: {
         "dark-color": "#201F1F",
-        "light-color": "#FFFF"
-      }
+        "light-color": "#FFFF",
+      },
+      fontFamily: {
+        borel: ["Borel", "cursive"],
+      },
     },
   },
-  plugins: [
-    require('@tailwindcss/line-clamp'),
-    
-  ],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
