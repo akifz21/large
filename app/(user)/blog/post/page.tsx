@@ -12,6 +12,7 @@ import { uploadImage } from "@/app/_api/upload";
 import { useRouter } from "next/navigation";
 import { addBlog } from "@/app/_api/blog";
 import { formatDateForShow } from "@/app/_lib/utils";
+import { RxCrossCircled } from "react-icons/rx";
 
 export default function Page() {
   const [sections, setSections] = useState([]);
@@ -68,6 +69,13 @@ export default function Page() {
   const handleDelete = (elementToDelete: any) => {
     const filteredArray = sections.filter((item) => item !== elementToDelete);
     setSections(filteredArray);
+  };
+
+  const handleDeleteTag = (elementToDelete: any) => {
+    const filteredArray = formik?.values?.tags?.filter(
+      (item) => item !== elementToDelete
+    );
+    formik.setFieldValue("tags", filteredArray);
   };
 
   return (
@@ -162,8 +170,14 @@ export default function Page() {
             className="custom-input"
           />
           {formik?.values?.tags?.map((tag, i) => (
-            <span className="badge" key={i}>
-              {tag}
+            <span
+              className="badge flex-flex-row  items-center text-lg gap-1"
+              key={i}
+            >
+              {tag}{" "}
+              <button type="button" onClick={() => handleDeleteTag(tag)}>
+                <RxCrossCircled />
+              </button>
             </span>
           ))}
           <button
