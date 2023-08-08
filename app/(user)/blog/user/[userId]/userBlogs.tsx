@@ -1,12 +1,10 @@
-"use client";
 import BlogCard from "@/app/_components/home/BlogCard";
 import SearchBar from "@/app/_components/home/SearchBar";
-import { useUser } from "@/app/_stores/user/hooks";
 import { Blog } from "@/app/types";
 import React from "react";
 
 const UserBlogs = ({ blogs }: { blogs: Blog[] }) => {
-  const user = blogs[0].author;
+  const user = blogs[0]?.author;
   return (
     <div className="flex flex-col gap-8 justify-center items-center">
       <div className="flex flex-col gap-2 items-center justify-center">
