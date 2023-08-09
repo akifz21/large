@@ -7,14 +7,14 @@ import { Blog } from "../types";
 export default function Home({ blogs }: { blogs: Blog[] }) {
   return (
     <div className="flex flex-col gap-12 justify-center items-center">
-      <div className="text-center">
-        <Logo />
+      <div className="text-center gap-4 flex flex-col items-center">
+        <Logo className="text-5xl" />
         <p className="opacity-75 font-medium">
           a blog about software development
         </p>
       </div>
       <SearchBar />
-      <div className="grid items-center justify-center grid-cols-12 lg:grid-cols-12 gap-6">
+      <div className="grid items-center justify-center grid-cols-12 lg:grid-cols-12 gap-12">
         {blogs.map((blog: Blog, index: any) => (
           <div key={index} className="lg:col-span-4 md:col-span-6 col-span-12">
             <BlogCard blog={blog} />

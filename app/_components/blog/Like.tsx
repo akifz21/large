@@ -3,7 +3,7 @@ import { getBlogLikes, like, unlike } from "@/app/_api/like";
 import { useUser } from "@/app/_stores/user/hooks";
 import { Blog, Like } from "@/app/types";
 import React, { useCallback, useEffect, useState } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { toast } from "react-hot-toast";
 import Spinner from "../common/Spinner";
 
@@ -11,6 +11,13 @@ const Like = ({ blog }: { blog: Blog }) => {
   const user = useUser();
   const [likes, setLikes] = useState<Like[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const checkIfLiked = () => {
+    if (likes.find((like) => like?.userId === user?.id)) {
+      return true;
+    }
+    return false;
+  };
 
   const getLikes = useCallback(async () => {
     setIsLoading(true);
@@ -25,7 +32,7 @@ const Like = ({ blog }: { blog: Blog }) => {
   }, [blog]);
 
   const toggleLike = async (blogId: string, userId: string) => {
-    if (likes.find((like) => like?.userId === userId)) {
+    if (checkIfLiked()) {
       const res = await unlike(blogId, userId);
       toast.success(res.data?.message);
     } else {
@@ -45,7 +52,12 @@ const Like = ({ blog }: { blog: Blog }) => {
         onClick={() => toggleLike(blog?.id, user?.id)}
         className="custom-button flex items-center gap-2 text-lg flex-row"
       >
-        <AiOutlineHeart size={25} />
+        {checkIfLiked() ? (
+          <AiFillHeart size={25} />
+        ) : (
+          <AiOutlineHeart size={25} />
+        )}
+
         {isLoading ? <Spinner className="w-4 h-4" /> : likes?.length}
       </button>
     </>

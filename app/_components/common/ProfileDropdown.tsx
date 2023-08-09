@@ -19,7 +19,9 @@ export default function ProfileDropdown() {
     <>
       <Menu as="div" className="relative inline-block text-left">
         <>
-          <Menu.Button className="nav-item">Profile</Menu.Button>
+          <Menu.Button className="nav-item">
+            {user?.first_name + " " + user?.last_name}
+          </Menu.Button>
         </>
         <Transition
           as={Fragment}

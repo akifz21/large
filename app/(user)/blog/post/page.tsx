@@ -89,13 +89,15 @@ export default function Page() {
         className="flex flex-col w-full items-center justify-center gap-4"
       >
         <div className="flex flex-col text-center gap-4">
-          <input
-            type="text"
+          <textarea
             onChange={formik.handleChange}
             name="title"
             value={formik.values.title}
             autoComplete="false"
-            className="custom-input p-0 font-extrabold  text-center text-5xl  border-none shadow-none focus:outline-none focus:ring-0"
+            rows={3}
+            maxLength={40}
+            cols={25}
+            className="custom-input p-0 font-extrabold   text-center text-5xl resize-none  border-none shadow-none focus:outline-none focus:ring-0"
             placeholder="Main Title"
           />
           <div>
