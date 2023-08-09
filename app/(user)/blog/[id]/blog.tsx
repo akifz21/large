@@ -16,8 +16,6 @@ import { FiEdit } from "react-icons/fi";
 const Blog = ({ blog }: { blog: Blog }) => {
   const user = useUser();
 
-  const router = useRouter();
-
   return (
     <div className="flex flex-col items-center gap-5">
       <div className="flex flex-col  text-center gap-6">

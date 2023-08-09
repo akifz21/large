@@ -26,6 +26,7 @@ const CommentForm = ({
       try {
         const res = await addComment(values);
         toast.success(res?.data?.message);
+        formik.resetForm();
         getComments();
       } catch (error) {
         console.log(error);

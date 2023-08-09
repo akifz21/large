@@ -7,7 +7,6 @@ import { Comment } from "@/app/types";
 
 const Comments = ({ blogId }: { blogId: string }) => {
   const [comments, setComments] = useState<Comment[]>([]);
-  const [loading, setLoading] = useState(false);
 
   const getComments = useCallback(async () => {
     try {
@@ -28,7 +27,7 @@ const Comments = ({ blogId }: { blogId: string }) => {
       <CommentForm getComments={getComments} blogId={blogId} />
       {comments?.map((comment) => (
         <div key={comment?.id}>
-          <CommentCard comment={comment} />
+          <CommentCard getComments={getComments} comment={comment} />
         </div>
       ))}
     </div>

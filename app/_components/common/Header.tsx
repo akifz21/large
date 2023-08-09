@@ -4,6 +4,7 @@ import React from "react";
 import Spinner from "./Spinner";
 import Auth from "./Auth";
 import ThemeDropdown from "./ThemeDropdown";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -24,7 +25,9 @@ const Header = () => {
       <div className="flex gap-7 items-center">
         <Logo className="text-2xl" />
         <div className="nav-item ml-5">About</div>
-        <div className="nav-item">Contact</div>
+        <Link href={"/contact"} className="nav-item">
+          Contact
+        </Link>
       </div>
       <div className="flex gap-7 items-center">
         <ThemeDropdown />
