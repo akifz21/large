@@ -12,20 +12,22 @@ const Container = ({ children }: { children: React.ReactNode }) => {
       <SiteProvider>
         <Providers>
           <Theme />
-          <Header />
-          <main
-            className="
+          <div className="flex flex-col min-h-screen justify-between">
+            <Header />
+            <main
+              className="
             px-8 sm:px-16 md:px-36 xl:px-52 2xl:px-60
           bg-light-color text-dark-color dark:bg-dark-color
             transition-colors  
             pt-28
             pb-14
-           dark:text-light-color min-h-screen"
-          >
-            {children}
-          </main>
+           dark:text-light-color "
+            >
+              {children}
+            </main>
 
-          <Footer />
+            <Footer />
+          </div>
         </Providers>
       </SiteProvider>
     </>

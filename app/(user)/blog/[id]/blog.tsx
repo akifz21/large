@@ -21,7 +21,9 @@ const Blog = ({ blog }: { blog: Blog }) => {
   return (
     <div className="flex flex-col items-center gap-5">
       <div className="flex flex-col  text-center gap-6">
-        <h1 className="text-5xl font-extrabold">{blog?.title} </h1>
+        <h1 className="text-5xl font-extrabold leading-relaxed">
+          {blog?.title}
+        </h1>
 
         <div>
           <p className="opacity-75  text-lg">
