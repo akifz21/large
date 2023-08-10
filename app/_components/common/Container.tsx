@@ -12,16 +12,14 @@ const Container = ({ children }: { children: React.ReactNode }) => {
       <SiteProvider>
         <Providers>
           <Theme />
-          <div className="flex flex-col min-h-screen justify-between">
+          <div className="flex flex-col min-h-screen transition-colors justify-between bg-light-color text-dark-color dark:bg-dark-color dark:text-light-color ">
             <Header />
             <main
               className="
             px-8 sm:px-16 md:px-36 xl:px-52 2xl:px-60
-          bg-light-color text-dark-color dark:bg-dark-color
-            transition-colors  
             pt-28
             pb-14
-           dark:text-light-color "
+           "
             >
               {children}
             </main>

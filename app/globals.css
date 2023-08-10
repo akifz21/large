@@ -18,6 +18,6 @@
   }
 
   .custom-input {
-    @apply py-2 text-sm text-dark-color shadow-md bg-light-color rounded-md px-3 border  dark:bg-dark-color dark:text-light-color focus:outline-none focus:ring-1;
+    @apply py-2 text-sm text-dark-color shadow-xl border dark:border-black bg-light-color rounded-md px-3 dark:bg-black dark:text-light-color focus:outline-none focus:ring-1 ;
   }
 }

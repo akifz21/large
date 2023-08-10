@@ -34,10 +34,14 @@ const Like = ({ blog }: { blog: Blog }) => {
   const toggleLike = async (blogId: string, userId: string) => {
     if (checkIfLiked()) {
       const res = await unlike(blogId, userId);
-      toast.success(res.data?.message);
+      if (res.status === 200) {
+        toast.success(res.data?.message);
+      }
     } else {
       const res = await like(blogId, userId);
-      toast.success(res.data?.message);
+      if (res.status === 200) {
+        toast.success(res.data?.message);
+      }
     }
     getLikes();
   };

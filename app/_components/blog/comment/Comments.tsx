@@ -22,7 +22,7 @@ const Comments = ({ blogId }: { blogId: string }) => {
   }, [getBlogComments]);
 
   return (
-    <div>
+    <div className="flex flex-col gap-4 ">
       <h2 className="text-2xl font-bold">Comments</h2>
       <CommentForm getComments={getComments} blogId={blogId} />
       {comments?.map((comment) => (

@@ -21,6 +21,7 @@ const user = createSlice({
       state.isLoggedIn = false;
       state.user = { id: "", email: "", last_name: "", first_name: "" };
       localStorage.removeItem("user");
+      localStorage.removeItem("token")
     },
     _setInitial: (state) => {
       if (localStorage.getItem("user") && localStorage.getItem("token")) {

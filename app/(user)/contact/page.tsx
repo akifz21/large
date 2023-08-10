@@ -10,8 +10,9 @@ const Page = () => {
       </p>
       <form className="flex flex-col gap-6 w-1/2 " action="">
         <input type="text" className="custom-input" placeholder="Name" />
-        <input type="text" className="custom-input" placeholder="Email" />
-        <textarea className="custom-input" placeholder="Message.." />
+        <input type="text" className="custom-input" placeholder="Surname" />
+        {/* <input type="text" className="custom-input" placeholder="Email" /> */}
+        <textarea className="custom-input" rows={10} placeholder="Message.." />
         <button className="custom-button w-1/4">Send</button>
       </form>
     </div>

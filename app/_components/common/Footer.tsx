@@ -7,14 +7,12 @@ const Footer = () => {
       className="
         h-24
         relative
-        -z-10
+      
         bottom-0
         w-full
          flex items-center
           justify-between 
           px-8 sm:px-16 md:px-36 lg:px-52 2xl:px-60
-           bg-light-color text-dark-color dark:bg-dark-color
-            transition-colors dark:text-light-color
             border-t tracking-wide
             "
     >
