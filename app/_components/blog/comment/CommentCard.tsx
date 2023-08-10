@@ -51,8 +51,8 @@ const CommentCard = ({
   };
 
   return (
-    <div className="flex mt-4 flex-col w-full md:w-1/2">
-      <div className="flex flex-row justify-between">
+    <div className="flex mt-4 gap-2 flex-col w-full">
+      <div className="flex flex-row  justify-between">
         <h3 className="font-bold text-xl">
           {comment?.user?.first_name + " " + comment?.user?.last_name}
         </h3>
@@ -67,7 +67,9 @@ const CommentCard = ({
           )}
         </div>
       </div>
-      <p className="border-t">{comment?.content}</p>
+      <p className="border-t border-separate py-2 border-gray-400 border-opacity-50 ">
+        {comment?.content}
+      </p>
     </div>
   );
 };

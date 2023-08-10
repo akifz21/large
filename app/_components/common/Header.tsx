@@ -30,6 +30,9 @@ const Header = () => {
         </Link>
       </div>
       <div className="flex gap-7 items-center">
+        <Link href={"/dashboard"} className="nav-item">
+          Dashboard
+        </Link>
         <ThemeDropdown />
         <Auth />
       </div>

@@ -2,8 +2,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "react-toastify/dist/ReactToastify.css";
-import Container from "./_components/common/Container";
-import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({
   weight: [

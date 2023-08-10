@@ -54,7 +54,7 @@ const Blog = ({ blog }: { blog: Blog }) => {
         <Image
           src={blog?.image}
           alt="blog image"
-          className="rounded-lg"
+          className="rounded-lg shadow-xl"
           objectFit="cover"
           fill
         />
@@ -71,11 +71,11 @@ const Blog = ({ blog }: { blog: Blog }) => {
                 <p className="leading-relaxed text-lg">{section?.content}</p>
               </div>
             ) : (
-              <div className="w-full relative  h-[400px]">
+              <div className="w-full relative h-[400px]">
                 <Image
                   src={section?.image}
                   alt="blog image"
-                  className="rounded-lg"
+                  className="rounded-xl"
                   fill
                   objectFit="contain"
                 />
@@ -83,7 +83,7 @@ const Blog = ({ blog }: { blog: Blog }) => {
             )}
           </div>
         ))}
-        <div className="flex mt-10 gap-5 flex-col">
+        <div className="flex mt-10 gap-5 w-full flex-col">
           <Comments blogId={blog?.id} />
         </div>
       </div>

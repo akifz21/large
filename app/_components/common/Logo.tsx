@@ -15,11 +15,11 @@ const Logo = ({ className, ...props }: LogoProps) => {
       href={"/"}
       className={cn("inline-flex gap-1 items-center", className)}
     >
-      <LeftArrow size={30} />
-      <span className={cn("font-borel relative top-2", className)} {...props}>
+      <LeftArrow />
+      <span className={cn("font-tech relative")} {...props}>
         b-log
       </span>
-      <RightArrow size={30} />
+      <RightArrow />
     </Link>
   );
 };

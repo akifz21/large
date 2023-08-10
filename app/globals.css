@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Borel&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -14,7 +15,7 @@
   }
 
   .custom-button {
-    @apply rounded-md bg-light-color px-4 border py-2 text-sm font-medium shadow-xl transition-all self-center text-dark-color hover:opacity-80 dark:bg-black dark:border-none dark:text-light-color;
+    @apply rounded-md bg-light-color px-4 border py-2 text-sm font-medium shadow-custom-sh transition-all self-center text-dark-color hover:opacity-80 dark:bg-black dark:border-none dark:text-light-color;
   }
 
   .custom-input {
