@@ -1,26 +1,26 @@
-export interface User{
-    id:string,
-    email:string,
-    first_name:string,
-    last_name:string
+export interface User {
+  id: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  role: string;
 }
 
-export interface Blog{
-    id:string
-    title:string,
-    sections : string[],
-    image:string,
-    published:boolean,
-    authorId:string,
-    tags:string[],
-    comments:Comment[],
-    likes:string[],
-    createdAt:string,
-    updatedAt:string,
-    searchable_text:string,
-    author:User
+export interface Blog {
+  id: string;
+  title: string;
+  sections: string[];
+  image: string;
+  published: boolean;
+  authorId: string;
+  tags: string[];
+  comments: Comment[];
+  likes: string[];
+  createdAt: string;
+  updatedAt: string;
+  searchable_text: string;
+  author: User;
 }
-
 
 interface Comment {
   id: string;
@@ -29,13 +29,13 @@ interface Comment {
   content: string;
   createdAt: string;
   updatedAt: string;
-  user: User
+  user: User;
 }
 
 interface CommentRequest {
-    userId:string,
-    blogId:string,
-    content:string
+  userId: string;
+  blogId: string;
+  content: string;
 }
 
 interface Like {
