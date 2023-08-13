@@ -1,60 +1,46 @@
 "use client";
 import React from "react";
-import { useState } from "react";
-import { Listbox } from "@headlessui/react";
 import { User } from "@/app/types";
-import { ROLES } from "../../../_lib/constants/user";
+import Table from "@/app/_components/dashboard/Table";
+import { deleteUser } from "@/app/_api/user";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 interface Props {
   users: User[];
 }
 const UserList = ({ users }: Props) => {
   console.log(`hey`, users);
-  const [role, setRole] = useState(ROLES[0]);
-  const handleChangeRole = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log;
+  const router = useRouter();
+
+  const handleDelete = async (id: string) => {
+    try {
+      const res = await deleteUser(id);
+      toast.success(res?.data?.message);
+      router.refresh();
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
-    <div className="flex flex-col gap-3">
-      <table className="shadow-custom-sh">
-        <thead>
-          <tr>
-            <th className="py-2">First Name</th>
-            <th className="py-2">Last Name</th>
-            <th className="py-2">Email</th>
-            <th className="py-2"> Role</th>
-          </tr>
-        </thead>
-        <tbody className="text-center">
-          {users?.map((user: User, key: number) => (
-            <tr
-              className="bg-gray-100 shadow-sm rounded hover:shadow-custom-sh cursor-pointer"
-              key={key}
-            >
-              <td className="py-2 px-2">{user.first_name}</td>
-              <td>{user.last_name}</td>
-              <td>{user.email}</td>
-              <td>
-                <Listbox value={user.role} onChange={setRole}>
-                  <Listbox.Button>{user.role}</Listbox.Button>
-                  <Listbox.Options>
-                    {ROLES.map((role, key: number) => (
-                      <Listbox.Option
-                        key={key}
-                        value={role}
-                        // disabled={person.unavailable}
-                      >
-                        {role}
-                      </Listbox.Option>
-                    ))}
-                  </Listbox.Options>
-                </Listbox>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <Table
+        head={["Name", "Surname", "Email", "Role", "Delete"]}
+        body={users.map((user) => [
+          user?.first_name,
+          user?.last_name,
+          user?.email,
+          user?.role,
+          <button
+            onClick={() => handleDelete(user?.id)}
+            className="custom-button bg-red-600 text-white"
+          >
+            Delete
+          </button>,
+        ])}
+      />
+    </>
   );
 };
 

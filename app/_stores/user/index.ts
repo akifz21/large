@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 
 const initialState = {
   isLoggedIn: localStorage.getItem("token") ? true : false,
-  user: { id: "", email: "", last_name: "", first_name: "" },
+  user: { id: "", email: "", last_name: "", first_name: "",role:"" },
 };
 
 const user = createSlice({
@@ -19,7 +19,7 @@ const user = createSlice({
     },
     _logout: (state) => {
       state.isLoggedIn = false;
-      state.user = { id: "", email: "", last_name: "", first_name: "" };
+      state.user = { id: "", email: "", last_name: "", first_name: "" ,role:""};
       localStorage.removeItem("user");
       localStorage.removeItem("token")
     },

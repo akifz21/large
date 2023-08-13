@@ -64,6 +64,7 @@ export default function Page() {
           toast.success(`Blog added successfully`);
         }
         router.push(`/`);
+        router.refresh();
       } catch (error) {
         console.log(error);
       }
