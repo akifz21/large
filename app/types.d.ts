@@ -6,10 +6,19 @@ export interface User {
   role: string;
 }
 
+export interface Section {
+  id: string;
+  title?: string;
+  content?: string;
+  image?: string;
+  type: string;
+  blogId: string;
+}
+
 export interface Blog {
   id: string;
   title: string;
-  sections: string[];
+  sections: Section[];
   image: string;
   published: boolean;
   authorId: string;

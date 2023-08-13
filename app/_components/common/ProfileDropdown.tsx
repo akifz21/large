@@ -53,8 +53,7 @@ export default function ProfileDropdown() {
                 </Link>
               </Menu.Item>
               <Menu.Item>
-                <Link href={"/blog/post"}>
-                  {" "}
+                <Link href={"/blog/create"}>
                   <button className="custom-button w-full shadow-none">
                     Post Blog
                   </button>

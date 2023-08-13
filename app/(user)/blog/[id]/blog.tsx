@@ -15,6 +15,7 @@ import { FiEdit } from "react-icons/fi";
 
 const Blog = ({ blog }: { blog: Blog }) => {
   const user = useUser();
+  const router = useRouter();
 
   return (
     <div className="flex flex-col items-center gap-5">
@@ -41,7 +42,10 @@ const Blog = ({ blog }: { blog: Blog }) => {
           {user?.id === blog?.authorId && (
             <div className="flex flex-row items-center gap-4  justify-center">
               <DeleteModal id={blog?.id} />
-              <button className="custom-button">
+              <button
+                className="custom-button"
+                onClick={() => router.push(`/blog/update/${blog?.id}`)}
+              >
                 <FiEdit size={25} />
               </button>
             </div>

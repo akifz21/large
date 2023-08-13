@@ -23,7 +23,7 @@ const INITIAL_STATE: StateType = {
   language: "tr",
   theme:
     (localStorage.getItem("theme") as StateType["theme"]) ||
-    ("system" as StateType["theme"]),
+    ("light" as StateType["theme"]),
 };
 
 const SiteContext = createContext<{

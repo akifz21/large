@@ -1,21 +1,25 @@
 "use client";
 import SectionModal from "@/app/_components/blog/SectionModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormikValues, useFormik } from "formik";
 import { useUser } from "@/app/_stores/user/hooks";
 import SectionDropdown from "@/app/_components/blog/SectionDropdown";
 import { toast } from "react-hot-toast";
-import { User } from "@/app/types";
+import { Blog, Section, User } from "@/app/types";
 import FileInput from "@/app/_components/blog/FileInput";
 import Image from "next/image";
 import { uploadImage } from "@/app/_api/upload";
 import { useRouter } from "next/navigation";
-import { addBlog } from "@/app/_api/blog";
+import { addBlog, updateBlog } from "@/app/_api/blog";
 import { formatDateForShow } from "@/app/_lib/utils";
 import { RxCrossCircled } from "react-icons/rx";
 
-export default function Page() {
-  const [sections, setSections] = useState([]);
+interface Props {
+  blog: Blog;
+}
+
+export default function UpdateBlog({ blog }: Props) {
+  const [sections, setSections] = useState<Section[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [type, setType] = useState("");
   const [file, setFile] = useState("");
@@ -24,8 +28,16 @@ export default function Page() {
   const user: User = useUser();
   const router = useRouter();
 
+  useEffect(() => {
+    if (blog) {
+      setSections(blog?.sections);
+      setFile(blog?.image);
+    }
+  }, [blog]);
+
   const handleImageChange = (e: any) => {
     const file = e.target.files[0];
+
     const url = URL.createObjectURL(file);
     setFile(file);
     setFileUrl(url);
@@ -38,30 +50,30 @@ export default function Page() {
   const removeImage = () => {
     setFile("");
     setFileUrl("");
+    formik.values.image = "";
+    //     handleImageChange();
   };
 
   const formik = useFormik({
-    initialValues: {
-      title: "",
-      sections: [],
-      image: "",
-      published: true,
-      authorId: (user && user?.id) || "",
-      tags: [],
-    },
+    initialValues: blog,
     enableReinitialize: true,
     onSubmit: async (values) => {
       values.authorId = user?.id;
       values.sections = sections;
-      const formData = new FormData();
-      formData.append("image", file);
 
-      try {
+      if (fileUrl) {
+        const formData = new FormData();
+        formData.append("image", file);
         const data = await uploadImage(formData);
         values.image = data.url;
-        const res = await addBlog(values);
+      }
+
+      console.log(`values`, values);
+
+      try {
+        const res = await updateBlog(blog.id, values);
         if (res.status === 200) {
-          toast.success(`Blog added successfully`);
+          toast.success(`Blog updated successfully`);
         }
         router.push(`/`);
         router.refresh();
@@ -98,7 +110,7 @@ export default function Page() {
             rows={3}
             maxLength={40}
             cols={25}
-            className="custom-input p-0 font-extrabold   text-center text-5xl resize-none  border-none shadow-none focus:outline-none focus:ring-0"
+            className="custom-input p-0 font-extrabold dark:bg-dark-color text-center text-5xl resize-none  border-none shadow-none focus:outline-none focus:ring-0"
             placeholder="Main Title"
           />
           <div>
@@ -108,13 +120,13 @@ export default function Page() {
           </div>
           <h1 className="text-4xl font-extrabold">. . .</h1>
         </div>
-        {!file ? (
+        {!file && !formik.values.image ? (
           <FileInput onChange={handleImageChange} name={"image"} />
         ) : (
           <>
             <div className="w-full relative  h-[400px]">
               <Image
-                src={fileUrl}
+                src={fileUrl ? fileUrl : blog?.image}
                 alt="blog image"
                 className="rounded-lg"
                 objectFit="cover"
@@ -164,6 +176,7 @@ export default function Page() {
             </div>
           ))}
         </div>
+
         <div className="w-full flex items-center justify-center">
           <SectionDropdown setType={setType} setIsOpen={setIsOpen} />
         </div>
@@ -200,9 +213,9 @@ export default function Page() {
         </div>
         <button
           type="submit"
-          className="w-1/2 custom-button bg-green-600 dark:bg-green-800 text-white"
+          className="w-1/2 custom-button bg-green-600 dark:bg-green-800 text-white mt-5"
         >
-          Post
+          Update
         </button>
       </form>
 
