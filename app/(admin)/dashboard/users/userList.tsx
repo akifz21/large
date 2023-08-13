@@ -26,7 +26,14 @@ const UserList = ({ users }: Props) => {
   return (
     <>
       <Table
-        head={["Name", "Surname", "Email", "Role", "Delete"]}
+        searchable
+        head={[
+          { name: "Name" },
+          { name: "Surname" },
+          { name: "Email" },
+          { name: "Role" },
+          { name: "Delete" },
+        ]}
         body={users.map((user) => [
           user?.first_name,
           user?.last_name,
