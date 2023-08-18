@@ -7,6 +7,7 @@ import { formatDateForShow } from "@/app/_lib/utils";
 import { useUser } from "@/app/_stores/user/hooks";
 import { Blog } from "@/app/types";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { BsTags } from "react-icons/bs";
@@ -25,9 +26,12 @@ const Blog = ({ blog }: { blog: Blog }) => {
         </h1>
 
         <div>
-          <p className="opacity-75  text-lg">
+          <Link
+            href={`/blog/user/${blog?.author?.id}`}
+            className="opacity-75  text-lg"
+          >
             {blog?.author?.first_name + " " + blog?.author?.last_name}
-          </p>
+          </Link>
           <p className="opacity-75">{formatDateForShow(blog?.createdAt)}</p>
         </div>
 

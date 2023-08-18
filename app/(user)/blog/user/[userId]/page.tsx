@@ -1,25 +1,24 @@
 import { baseURL } from "@/app/_api/axiosInstance";
-import { Blog } from "@/app/types";
+import { UserDetails } from "@/app/types";
 import UserBlogs from "./userBlogs";
 
-async function getBlogs(userId: string) {
-  const res = await fetch(`${baseURL}/blogs/author/${userId}`, {
-    cache: "no-store",
-  });
+async function getUser(userId: string) {
+  const res = await fetch(`${baseURL}/users/details/${userId}`);
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
   return res.json();
 }
 
-const Page = async ({ params }: { params: { userId: string } }) => {
-  const res = await getBlogs(params.userId);
-  const blogs: Blog[] = res?.data;
+const UserBlogsPage = async ({ params }: { params: { userId: string } }) => {
+  const userResponse = await getUser(params.userId);
+  const user: UserDetails = userResponse?.data;
+  console.log(user);
   return (
     <>
-      <UserBlogs blogs={blogs} />
+      <UserBlogs user={user} />
     </>
   );
 };
 
-export default Page;
+export default UserBlogsPage;

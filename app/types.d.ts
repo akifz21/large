@@ -6,6 +6,17 @@ export interface User {
   role: string;
 }
 
+export interface UserDetails{
+  id: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  role: string;
+  blogs:Blog[]
+  followedBy:string[]
+  following:string[]
+}
+
 export interface Section {
   id: string;
   title?: string;
