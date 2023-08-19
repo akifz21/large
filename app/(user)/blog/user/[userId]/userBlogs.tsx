@@ -46,28 +46,30 @@ const UserBlogs = ({ user }: { user: UserDetails }) => {
     return false;
   };
 
-  console.log(user);
-
   return (
     <div className="flex flex-col gap-8 justify-center items-center">
       <div className="flex flex-col gap-4 items-center justify-center">
         <h1 className="text-3xl font-bold">
           {user?.first_name + " " + user?.last_name}
         </h1>
-        {!checkIfFollowed() ? (
-          <button
-            onClick={() => handleFollow(user?.id)}
-            className="inline-flex  text-lg flex-row items-center gap-2 custom-button"
-          >
-            Follow <FiUserPlus />
-          </button>
+        {user?.id !== authUser?.id ? (
+          !checkIfFollowed() ? (
+            <button
+              onClick={() => handleFollow(user?.id)}
+              className="inline-flex  text-lg flex-row items-center gap-2 custom-button"
+            >
+              Follow <FiUserPlus />
+            </button>
+          ) : (
+            <button
+              onClick={() => handleUnfollow(user?.id)}
+              className="inline-flex bg-red-600 dark:bg-red-700  text-white dark:text-white  text-lg flex-row items-center gap-2 custom-button"
+            >
+              Unfollow <FiUserMinus />
+            </button>
+          )
         ) : (
-          <button
-            onClick={() => handleUnfollow(user?.id)}
-            className="inline-flex bg-red-600 text-white  text-lg flex-row items-center gap-2 custom-button"
-          >
-            Unfollow <FiUserMinus />
-          </button>
+          <></>
         )}
         <div className="flex flex-row gap-4 justify-between items-center">
           <p className="font-semibold text-md">

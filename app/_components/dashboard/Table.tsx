@@ -31,7 +31,7 @@ const Table = ({
           />
         </div>
       )}
-      <div className="w-full  shadow-custom-sh">
+      <div className="w-full  overflow-x-scroll shadow-custom-sh">
         <table className="p-4 w-full">
           <thead>
             <tr>
