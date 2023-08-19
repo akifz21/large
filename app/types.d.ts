@@ -6,6 +6,13 @@ export interface User {
   role: string;
 }
 
+interface Follow {
+  follower: User;
+  followerId: string;
+  following: User;
+  followingId: string;
+}
+
 export interface UserDetails{
   id: string;
   email: string;
@@ -13,8 +20,8 @@ export interface UserDetails{
   last_name: string;
   role: string;
   blogs:Blog[]
-  followedBy:string[]
-  following:string[]
+  followedBy:Follow[]
+  following:Follow[]
 }
 
 export interface Section {

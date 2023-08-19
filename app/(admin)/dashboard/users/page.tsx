@@ -11,7 +11,6 @@ const getUsers = async () => {
 
 const Users = async () => {
   const responseData = await getUsers();
-
   return <UserList users={responseData?.data} />;
 };
 

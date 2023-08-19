@@ -1,5 +1,4 @@
 "use client";
-import { deleteBlog } from "@/app/_api/blog";
 import Like from "@/app/_components/blog/Like";
 import Comments from "@/app/_components/blog/comment/Comments";
 import DeleteModal from "@/app/_components/common/DeleteModal";
@@ -11,7 +10,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { BsTags } from "react-icons/bs";
-import { FaRegTrashCan } from "react-icons/fa6";
 import { FiEdit } from "react-icons/fi";
 
 const Blog = ({ blog }: { blog: Blog }) => {
@@ -28,7 +26,7 @@ const Blog = ({ blog }: { blog: Blog }) => {
         <div>
           <Link
             href={`/blog/user/${blog?.author?.id}`}
-            className="opacity-75  text-lg"
+            className="opacity-75 underline  text-lg"
           >
             {blog?.author?.first_name + " " + blog?.author?.last_name}
           </Link>
