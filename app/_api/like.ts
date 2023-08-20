@@ -1,6 +1,6 @@
 import { instance as axios } from "./axiosInstance";
 
-const like = (blogId:string,userId:string) => axios.get(`/likes/${blogId}&${userId}`) 
+const like = (blogId:string,userId:string) => axios.post(`/likes/${blogId}&${userId}`) 
 
 const unlike = (blogId:string,userId:string) => axios.delete(`/likes/${blogId}&${userId}`)
 

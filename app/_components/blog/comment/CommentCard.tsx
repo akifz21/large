@@ -27,28 +27,13 @@ const CommentCard = ({
     enableReinitialize: true,
     onSubmit: async (values) => {
       const id = commentToEdit?.id;
-      const toastId = toast.loading("Updating...");
-      try {
-        const res = await updateComment(id, values);
-        if (res.status === 200) {
-          toast.success(res?.data?.message, { id: toastId });
-          getComments();
-        }
-      } catch (error) {
-        toast.dismiss(toastId);
-        console.log(error);
-      } finally {
-        setIsEdit(!isEdit);
-      }
+      await updateComment(id, values);
+      getComments();
     },
   });
 
   const handleDelete = async (id: string) => {
-    await toast.promise(deleteComment(id), {
-      loading: "Deleting...",
-      success: (res) => <b>{res?.status === 200 && res?.data?.message}</b>,
-      error: <b>Someting went wrong.</b>,
-    });
+    await deleteComment(id);
     getComments();
   };
 

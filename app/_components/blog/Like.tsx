@@ -31,40 +31,13 @@ const Like = ({ blog }: { blog: Blog }) => {
     }
   }, [blog]);
 
-  const toggleLike = (blogId: string, userId: string) => {
+  const toggleLike = async (blogId: string, userId: string) => {
     if (checkIfLiked()) {
-      const res = unlike(blogId, userId);
-      toast
-        .promise(res, {
-          loading: "Loading...",
-          success: (res) => {
-            if (res.status === 200) {
-              return res?.data?.message;
-            }
-          },
-          error: (error) => {
-            console.log(error);
-            return "Error.";
-          },
-        })
-        .finally(() => getLikes());
+      await unlike(blogId, userId);
     } else {
-      const res = like(blogId, userId);
-      toast
-        .promise(res, {
-          loading: "Loading...",
-          success: (res) => {
-            if (res.status === 200) {
-              return res?.data?.message;
-            }
-          },
-          error: (error) => {
-            console.log(error);
-            return "Error.";
-          },
-        })
-        .finally(() => getLikes());
+      await like(blogId, userId);
     }
+    getLikes();
   };
   useEffect(() => {
     getLikes();

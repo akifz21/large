@@ -19,8 +19,7 @@ const DeleteModal = ({ id }: { id: string }) => {
 
   const handleDelete = async (id: string) => {
     try {
-      const res = await deleteBlog(id);
-      toast.success(res.data?.message);
+      await deleteBlog(id);
       router.push("/");
       router.refresh();
     } catch (error) {

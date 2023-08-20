@@ -15,29 +15,14 @@ const User = ({ user }: { user: UserDetails }) => {
   const authUser = useUser();
 
   const handleFollow = async (userId: string) => {
-    const toastId = toast.loading("Following...");
-    try {
-      const res = await follow(userId);
-      if (res.status === 200) {
-        toast.success(res.data?.message, { id: toastId });
-      }
-      router.refresh();
-    } catch (error) {
-      toast.dismiss(toastId);
-      console.log(error);
-    }
+    await follow(userId);
+    router.refresh();
   };
 
   const handleUnfollow = async (userId: string) => {
-    const toastId = toast.loading("Unfollowing...");
-    try {
-      const res = await unfollow(userId);
-      toast.success(res?.data?.message, { id: toastId });
-      router.refresh();
-    } catch (error) {
-      toast.dismiss(toastId);
-      console.log(error);
-    }
+    const res = await unfollow(userId);
+
+    router.refresh();
   };
 
   const checkIfFollowed = () => {

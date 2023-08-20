@@ -13,7 +13,6 @@ export default function ProfileDropdown() {
   const handleLogout = () => {
     logout();
     router.push("/");
-    toast.success("Logout successfully");
   };
   return (
     <>

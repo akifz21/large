@@ -18,15 +18,10 @@ const Login = () => {
   };
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    try {
-      const response = await authLogin(formData);
-      console.log(response);
-      login(response.data.data.access_token);
-      router.push("/");
-      toast.success("Login successfully");
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await authLogin(formData);
+    console.log(response);
+    login(response.data.data.access_token);
+    router.push("/");
   };
 
   const loginViaGithub = async () => {

@@ -62,9 +62,6 @@ export default function Page() {
         const data = await uploadImage(formData);
         values.image = data.url;
         const res = await addBlog(values);
-        if (res.status === 200) {
-          toast.success(`Blog added successfully`);
-        }
         router.push(`/`);
         router.refresh();
       } catch (error) {

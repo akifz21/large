@@ -7,8 +7,12 @@ const instance = axios.create({
   baseURL,
 });
 
-instance.interceptors.request.use((config) => {
+instance.interceptors.request.use((config: any) => {
   const token = localStorage.getItem("token");
+  if (config.method !=="get") {
+    const loadingToastId = toast.loading("Loading...");
+    config.__loadingToastId = loadingToastId
+  }
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -16,19 +20,23 @@ instance.interceptors.request.use((config) => {
 });
 
 instance.interceptors.response.use(
-  (response) => response,
+  (response: any) => {
+    if (response.status >= 200 && response.status < 300) {
+      if (response.config.method !== "get") {
+        toast.success(response.data?.message, { id: response.config.__loadingToastId });
+      }
+    }
+    return response;
+  },
+
   (error) => {
     if (error?.response?.status === 401) {
       toast.error("Oturumunuz sona erdi. Lütfen tekrar giriş yapın.");
-      // localStorage.removeItem("token");
-      // window.location.href = "/login";
     }
     try {
       toast.error(error?.response?.data?.message);
-      setInterval(()=>toast.dismiss(),1000)      
     } catch (e) {
       toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
-      setInterval(()=>toast.dismiss(),1000)
     }
     return error;
   }

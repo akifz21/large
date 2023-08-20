@@ -23,18 +23,9 @@ const CommentForm = ({
     },
     enableReinitialize: true,
     onSubmit: async (values) => {
-      const toastId = toast.loading("Loading...");
-      try {
-        const res = await addComment(values);
-        if (res.status === 200) {
-          toast.success(res?.data?.message, { id: toastId });
-        }
-        formik.resetForm();
-        getComments();
-      } catch (error) {
-        toast.dismiss(toastId);
-        console.log(error);
-      }
+      await addComment(values);
+      formik.resetForm();
+      getComments();
     },
   });
 

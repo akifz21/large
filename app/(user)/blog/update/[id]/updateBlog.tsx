@@ -72,9 +72,6 @@ export default function UpdateBlog({ blog }: Props) {
 
       try {
         const res = await updateBlog(blog.id, values);
-        if (res.status === 200) {
-          toast.success(`Blog updated successfully`);
-        }
         router.push(`/`);
         router.refresh();
       } catch (error) {

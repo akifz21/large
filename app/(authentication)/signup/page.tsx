@@ -17,19 +17,7 @@ const Signup = () => {
   };
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    try {
-      const response: any = await createUser(formData);
-      if (response.status === 200) {
-        toast.success("Register successfully");
-        router.push("/");
-      } else {
-        console.log(response);
-        toast.error(response.response.data.message);
-      }
-    } catch (error: any) {
-      toast.error("err");
-      console.log(error);
-    }
+    await createUser(formData);
   };
 
   return (
