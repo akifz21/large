@@ -1,6 +1,6 @@
 import { baseURL } from "@/app/_api/axiosInstance";
 import { UserDetails } from "@/app/types";
-import UserBlogs from "./userBlogs";
+import User from "./user";
 
 async function getUser(userId: string) {
   const res = await fetch(`${baseURL}/users/details/${userId}`, {
@@ -12,14 +12,14 @@ async function getUser(userId: string) {
   return res.json();
 }
 
-const UserBlogsPage = async ({ params }: { params: { userId: string } }) => {
+const UserPage = async ({ params }: { params: { userId: string } }) => {
   const userResponse = await getUser(params.userId);
   const user: UserDetails = userResponse?.data;
   return (
     <>
-      <UserBlogs user={user} />
+      <User user={user} />
     </>
   );
 };
 
-export default UserBlogsPage;
+export default UserPage;

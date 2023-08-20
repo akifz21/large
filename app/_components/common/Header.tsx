@@ -1,12 +1,13 @@
-import dynamic from "next/dynamic";
+"use client";
 import Logo from "./Logo";
 import React from "react";
-import Spinner from "./Spinner";
 import Auth from "./Auth";
 import ThemeDropdown from "./ThemeDropdown";
 import Link from "next/link";
+import { useUser } from "@/app/_stores/user/hooks";
 
 const Header = () => {
+  const user = useUser();
   return (
     <header
       className="
@@ -30,9 +31,11 @@ const Header = () => {
         </Link>
       </div>
       <div className="flex gap-7 items-center">
-        <Link href={"/dashboard"} className="nav-item">
-          Dashboard
-        </Link>
+        {user?.role === "ADMIN" && (
+          <Link className="nav-item" href={"/dashboard"}>
+            Dashboard
+          </Link>
+        )}
         <ThemeDropdown />
         <Auth />
       </div>

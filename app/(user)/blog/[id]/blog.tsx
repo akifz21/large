@@ -25,7 +25,7 @@ const Blog = ({ blog }: { blog: Blog }) => {
 
         <div>
           <Link
-            href={`/blog/user/${blog?.author?.id}`}
+            href={`/user/${blog?.author?.id}`}
             className="opacity-75 underline  text-lg"
           >
             {blog?.author?.first_name + " " + blog?.author?.last_name}

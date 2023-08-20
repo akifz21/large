@@ -1,6 +1,6 @@
 "use client";
 import { follow, unfollow } from "@/app/_api/follow";
-import BlogCard from "@/app/_components/home/BlogCard";
+import BlogCard from "@/app/_components/blog/BlogCard";
 import SearchBar from "@/app/_components/home/SearchBar";
 import { useUser } from "@/app/_stores/user/hooks";
 import { Blog, UserDetails } from "@/app/types";
@@ -9,28 +9,33 @@ import React from "react";
 import toast from "react-hot-toast";
 import { FiUserMinus, FiUserPlus } from "react-icons/fi";
 
-const UserBlogs = ({ user }: { user: UserDetails }) => {
+const User = ({ user }: { user: UserDetails }) => {
   const blogs = user?.blogs;
   const router = useRouter();
   const authUser = useUser();
+
   const handleFollow = async (userId: string) => {
+    const toastId = toast.loading("Following...");
     try {
       const res = await follow(userId);
       if (res.status === 200) {
-        toast.success(res.data?.message);
+        toast.success(res.data?.message, { id: toastId });
       }
       router.refresh();
     } catch (error) {
+      toast.dismiss(toastId);
       console.log(error);
     }
   };
 
   const handleUnfollow = async (userId: string) => {
+    const toastId = toast.loading("Unfollowing...");
     try {
       const res = await unfollow(userId);
-      toast.success(res?.data?.message);
+      toast.success(res?.data?.message, { id: toastId });
       router.refresh();
     } catch (error) {
+      toast.dismiss(toastId);
       console.log(error);
     }
   };
@@ -80,17 +85,31 @@ const UserBlogs = ({ user }: { user: UserDetails }) => {
           </p>
         </div>
       </div>
-      <p className="font-semibold text-lg ">blogs</p>
-      <SearchBar />
-      <div className="grid items-center justify-center grid-cols-12 lg:grid-cols-12 gap-6">
-        {blogs.map((blog: Blog, index: any) => (
-          <div key={index} className="lg:col-span-4 md:col-span-6 col-span-12">
-            <BlogCard blog={blog} />
+
+      {blogs.length > 0 ? (
+        <>
+          <p className="font-semibold text-lg ">blogs</p>
+          <SearchBar />
+          <div className="grid items-center justify-center grid-cols-12 lg:grid-cols-12 gap-6">
+            <>
+              {blogs.map((blog: Blog, index: any) => (
+                <div
+                  key={index}
+                  className="lg:col-span-4 md:col-span-6 col-span-12"
+                >
+                  <BlogCard blog={blog} />
+                </div>
+              ))}
+            </>
           </div>
-        ))}
-      </div>
+        </>
+      ) : (
+        <>
+          <h2 className="text-4xl font-semibold ">no blogs to display</h2>
+        </>
+      )}
     </div>
   );
 };
 
-export default UserBlogs;
+export default User;

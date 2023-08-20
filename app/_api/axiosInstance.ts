@@ -25,8 +25,10 @@ instance.interceptors.response.use(
     }
     try {
       toast.error(error?.response?.data?.message);
+      setInterval(()=>toast.dismiss(),1000)      
     } catch (e) {
       toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
+      setInterval(()=>toast.dismiss(),1000)
     }
     return error;
   }

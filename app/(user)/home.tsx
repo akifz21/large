@@ -1,6 +1,6 @@
 "use client";
 import Logo from "../_components/common/Logo";
-import BlogCard from "../_components/home/BlogCard";
+import BlogCard from "../_components/blog/BlogCard";
 import SearchBar from "../_components/home/SearchBar";
 import { Blog } from "../types";
 

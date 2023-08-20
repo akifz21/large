@@ -22,6 +22,7 @@ const DeleteModal = ({ id }: { id: string }) => {
       const res = await deleteBlog(id);
       toast.success(res.data?.message);
       router.push("/");
+      router.refresh();
     } catch (error) {
       console.log(error);
     }

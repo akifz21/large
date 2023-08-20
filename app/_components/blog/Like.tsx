@@ -31,21 +31,41 @@ const Like = ({ blog }: { blog: Blog }) => {
     }
   }, [blog]);
 
-  const toggleLike = async (blogId: string, userId: string) => {
+  const toggleLike = (blogId: string, userId: string) => {
     if (checkIfLiked()) {
-      const res = await unlike(blogId, userId);
-      if (res.status === 200) {
-        toast.success(res.data?.message);
-      }
+      const res = unlike(blogId, userId);
+      toast
+        .promise(res, {
+          loading: "Loading...",
+          success: (res) => {
+            if (res.status === 200) {
+              return res?.data?.message;
+            }
+          },
+          error: (error) => {
+            console.log(error);
+            return "Error.";
+          },
+        })
+        .finally(() => getLikes());
     } else {
-      const res = await like(blogId, userId);
-      if (res.status === 200) {
-        toast.success(res.data?.message);
-      }
+      const res = like(blogId, userId);
+      toast
+        .promise(res, {
+          loading: "Loading...",
+          success: (res) => {
+            if (res.status === 200) {
+              return res?.data?.message;
+            }
+          },
+          error: (error) => {
+            console.log(error);
+            return "Error.";
+          },
+        })
+        .finally(() => getLikes());
     }
-    getLikes();
   };
-
   useEffect(() => {
     getLikes();
   }, [getLikes]);

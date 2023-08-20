@@ -70,7 +70,7 @@ const UserList = ({ users }: Props) => {
           ),
           <button
             onClick={() => handleDelete(user?.id)}
-            className="custom-button bg-red-600 text-white"
+            className="custom-button dark:bg-red-600 dar:text-white bg-red-600 text-white"
           >
             Delete
           </button>,
@@ -78,13 +78,13 @@ const UserList = ({ users }: Props) => {
             <div className="flex flex-row gap-4 items-center">
               <button
                 onClick={() => handleUpdate(user?.id, role)}
-                className="custom-button w-full inline-flex items-center justify-center text-xl bg-green-600 text-white"
+                className="custom-button w-full inline-flex items-center  dark:bg-green-600 dark:text-white justify-center text-xl bg-green-600 text-white"
               >
                 <FiCheck />
               </button>
               <button
                 onClick={() => setIsEdit(false)}
-                className="custom-button w-full inline-flex items-center justify-center text-xl bg-red-600 text-white"
+                className="custom-button w-full inline-flex items-center justify-center text-xl bg-red-600 dark:bg-red-600 dark:text-white text-white"
               >
                 <FiX />
               </button>
@@ -92,7 +92,7 @@ const UserList = ({ users }: Props) => {
           ) : (
             <button
               onClick={() => setIsEdit(true)}
-              className="custom-button w-full inline-flex items-center justify-center text-xl bg-blue-600 text-white"
+              className="custom-button w-full inline-flex items-center justify-center text-xl dark:bg-blue-700 dark:text-white bg-blue-600 text-white"
             >
               <FiEdit />
             </button>
