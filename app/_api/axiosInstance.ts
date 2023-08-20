@@ -29,14 +29,14 @@ instance.interceptors.response.use(
     return response;
   },
 
-  (error) => {
+  (error:any) => {
     if (error?.response?.status === 401) {
-      toast.error("Oturumunuz sona erdi. Lütfen tekrar giriş yapın.");
+      toast.error("Oturumunuz sona erdi. Lütfen tekrar giriş yapın.",{id:error.config.__loadingToastId});
     }
     try {
-      toast.error(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message,{id:error.config.__loadingToastId});
     } catch (e) {
-      toast.error("Bir hata oluştu. Lütfen tekrar deneyin.");
+      toast.error("Bir hata oluştu. Lütfen tekrar deneyin.",{id:error.config.__loadingToastId});
     }
     return error;
   }
