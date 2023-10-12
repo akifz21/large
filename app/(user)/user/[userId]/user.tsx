@@ -6,7 +6,6 @@ import { useUser } from "@/app/_stores/user/hooks";
 import { Blog, UserDetails } from "@/app/types";
 import { useRouter } from "next/navigation";
 import React from "react";
-import toast from "react-hot-toast";
 import { FiUserMinus, FiUserPlus } from "react-icons/fi";
 
 const User = ({ user }: { user: UserDetails }) => {
